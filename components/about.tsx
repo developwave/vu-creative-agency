@@ -1,0 +1,305 @@
+"use client"
+
+import { useRef, useState, useEffect } from "react"
+import { CheckCircle2, Award, Users, Zap, Heart } from "lucide-react"
+import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion"
+
+export default function About() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const [countUp, setCountUp] = useState({ projects: 0, clients: 0, years: 0, satisfaction: 0 })
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  })
+
+  const bgCircle1Y = useTransform(scrollYProgress, [0, 1], [0, -200])
+  const bgCircle2Y = useTransform(scrollYProgress, [0, 1], [0, 150])
+  const imageY = useTransform(scrollYProgress, [0, 1], [50, -50])
+  const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 })
+
+  useEffect(() => {
+    if (isInView) {
+      const duration = 2000
+      const steps = 60
+      const interval = duration / steps
+      let step = 0
+
+      const timer = setInterval(() => {
+        step++
+        setCountUp({
+          projects: Math.min(Math.floor((250 * step) / steps), 250),
+          clients: Math.min(Math.floor((120 * step) / steps), 120),
+          years: Math.min(Math.floor((10 * step) / steps), 10),
+          satisfaction: Math.min(Math.floor((98 * step) / steps), 98),
+        })
+        if (step >= steps) clearInterval(timer)
+      }, interval)
+
+      return () => clearInterval(timer)
+    }
+  }, [isInView])
+
+  const values = [
+    { icon: Award, title: "Excellence", desc: "We pursue perfection in every pixel" },
+    { icon: Users, title: "Collaboration", desc: "Your vision drives our creativity" },
+    { icon: Zap, title: "Innovation", desc: "Pushing boundaries of design" },
+    { icon: Heart, title: "Passion", desc: "We love what we do" },
+  ]
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: { staggerChildren: 0.1, delayChildren: 0.2 },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
+    },
+  }
+
+  return (
+    <section
+      id="about"
+      ref={sectionRef}
+      className="py-32 px-6 bg-gradient-to-b from-primary/5 via-background to-background relative overflow-hidden"
+    >
+      <motion.div
+        style={{ y: bgCircle1Y }}
+        className="absolute top-20 right-20 w-96 h-96 bg-accent/5 rounded-full blur-3xl pointer-events-none"
+      />
+      <motion.div
+        style={{ y: bgCircle2Y }}
+        className="absolute bottom-40 left-10 w-72 h-72 bg-primary/5 rounded-full blur-3xl pointer-events-none"
+      />
+
+      <motion.div
+        animate={{ rotate: 360 }}
+        transition={{ duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-accent/5 rounded-full pointer-events-none"
+      />
+      <motion.div
+        animate={{ rotate: -360 }}
+        transition={{ duration: 45, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-accent/5 rounded-full pointer-events-none"
+      />
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        {/* Header */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="text-center mb-20"
+        >
+          <motion.p variants={itemVariants} className="text-accent text-sm font-semibold tracking-widest mb-4">
+            WHO WE ARE
+          </motion.p>
+          <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-bold text-foreground mb-6">
+            Crafting Digital
+            <motion.span
+              className="block bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent bg-[length:200%_auto]"
+              animate={{ backgroundPosition: ["0%", "200%"] }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            >
+              Experiences
+            </motion.span>
+          </motion.h2>
+          <motion.p variants={itemVariants} className="text-xl text-foreground/60 max-w-2xl mx-auto">
+            We're a team of passionate designers and strategists dedicated to bringing your brand's vision to life.
+          </motion.p>
+        </motion.div>
+
+        {/* Stats Row */}
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+          className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24"
+        >
+          {[
+            { value: countUp.projects, label: "Projects Completed", suffix: "+" },
+            { value: countUp.clients, label: "Happy Clients", suffix: "+" },
+            { value: countUp.years, label: "Years Experience", suffix: "+" },
+            { value: countUp.satisfaction, label: "Satisfaction Rate", suffix: "%" },
+          ].map((stat, i) => (
+            <motion.div key={i} variants={itemVariants} whileHover={{ y: -5, scale: 1.02 }} className="relative group">
+              <motion.div
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+                className="absolute inset-0 bg-gradient-to-br from-accent/20 to-primary/20 rounded-2xl blur-xl"
+              />
+              <div className="relative bg-card/50 backdrop-blur-sm border border-accent/10 rounded-2xl p-6 text-center hover:border-accent/30 transition-all duration-300">
+                <motion.div
+                  className="text-5xl md:text-6xl font-bold text-accent mb-2"
+                  initial={{ scale: 0.5 }}
+                  animate={isInView ? { scale: 1 } : {}}
+                  transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
+                >
+                  {stat.value}
+                  {stat.suffix}
+                </motion.div>
+                <div className="text-sm text-foreground/60 uppercase tracking-wider">{stat.label}</div>
+              </div>
+            </motion.div>
+          ))}
+        </motion.div>
+
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center mb-32">
+          {/* Left - Image Collage with parallax */}
+          <motion.div
+            initial={{ opacity: 0, x: -50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="relative"
+          >
+            <motion.div style={{ y: smoothImageY }} className="relative h-[600px]">
+              {/* Main Image */}
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="absolute top-0 left-0 w-3/4 h-3/4 rounded-3xl overflow-hidden border-2 border-accent/20 shadow-2xl shadow-accent/10"
+                style={{ transformPerspective: 1000 }}
+              >
+                <img
+                  src="/modern-creative-agency-office-workspace-with-desig.jpg"
+                  alt="Our workspace"
+                  className="w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+              </motion.div>
+
+              {/* Secondary Image */}
+              <motion.div
+                whileHover={{ scale: 1.02, rotateY: -5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+                className="absolute bottom-0 right-0 w-2/3 h-1/2 rounded-3xl overflow-hidden border-2 border-primary/20 shadow-xl"
+                style={{ transformPerspective: 1000 }}
+              >
+                <img
+                  src="/designer-working-on-tablet-creative-studio.jpg"
+                  alt="Designer at work"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              {/* Floating Badge */}
+              <motion.div
+                animate={{ y: [-5, 5, -5] }}
+                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                className="absolute top-10 right-10 bg-accent text-background px-6 py-3 rounded-full font-bold shadow-lg shadow-accent/30"
+              >
+                Since 2014
+              </motion.div>
+
+              {/* Decorative Element */}
+              <motion.div
+                animate={{ rotate: [0, 10, -10, 0] }}
+                transition={{ duration: 5, repeat: Number.POSITIVE_INFINITY }}
+                className="absolute -bottom-4 left-1/4 w-20 h-20 bg-primary/20 backdrop-blur-sm rounded-2xl border border-primary/30 flex items-center justify-center"
+              >
+                <Award className="w-10 h-10 text-primary" />
+              </motion.div>
+            </motion.div>
+          </motion.div>
+
+          {/* Right - Content */}
+          <motion.div
+            initial={{ opacity: 0, x: 50 }}
+            animate={isInView ? { opacity: 1, x: 0 } : {}}
+            transition={{ duration: 0.8, delay: 0.5 }}
+          >
+            <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
+              We Don't Just Design,
+              <span className="text-accent"> We Solve Problems</span>
+            </h3>
+            <p className="text-lg text-foreground/60 mb-8 leading-relaxed">
+              At VU Creative Agency, we believe great design is more than aesthetics—it's about creating meaningful
+              connections between brands and their audiences. Our multidisciplinary team combines artistic vision with
+              strategic thinking to deliver work that resonates.
+            </p>
+            <p className="text-lg text-foreground/60 mb-10 leading-relaxed">
+              From startups to Fortune 500 companies, we've partnered with diverse clients to transform their digital
+              presence and elevate their brand identity.
+            </p>
+
+            <ul className="space-y-4 mb-10">
+              {[
+                "Award-winning design team with global recognition",
+                "Custom solutions tailored to your unique brand",
+                "Rapid delivery without compromising quality",
+                "Ongoing support and brand consultation",
+              ].map((item, i) => (
+                <motion.li
+                  key={i}
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={isInView ? { opacity: 1, x: 0 } : {}}
+                  transition={{ delay: 0.7 + i * 0.1, duration: 0.5 }}
+                  className="flex items-center gap-4 text-foreground/80"
+                >
+                  <motion.div
+                    whileHover={{ scale: 1.2, rotate: 360 }}
+                    transition={{ duration: 0.3 }}
+                    className="w-6 h-6 rounded-full bg-accent/20 flex items-center justify-center flex-shrink-0"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-accent" />
+                  </motion.div>
+                  {item}
+                </motion.li>
+              ))}
+            </ul>
+
+            <motion.button
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="group relative px-8 py-4 bg-accent text-background font-semibold rounded-xl overflow-hidden"
+            >
+              <span className="relative z-10">Learn More About Us</span>
+              <motion.div
+                className="absolute inset-0 bg-primary"
+                initial={{ y: "100%" }}
+                whileHover={{ y: 0 }}
+                transition={{ duration: 0.3 }}
+              />
+            </motion.button>
+          </motion.div>
+        </div>
+
+        {/* Values Section - Removed team section, kept only values */}
+        <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={containerVariants}>
+          <motion.h3 variants={itemVariants} className="text-3xl font-bold text-foreground text-center mb-12">
+            Our Core Values
+          </motion.h3>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+            {values.map((value, i) => (
+              <motion.div
+                key={i}
+                variants={itemVariants}
+                whileHover={{ y: -10, scale: 1.05 }}
+                className="group relative p-6 bg-card/30 backdrop-blur-sm border border-accent/10 rounded-2xl text-center hover:border-accent/30 transition-all duration-300"
+              >
+                <motion.div
+                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
+                  className="w-14 h-14 mx-auto mb-4 bg-accent/10 rounded-2xl flex items-center justify-center group-hover:bg-accent/20"
+                >
+                  <value.icon className="w-7 h-7 text-accent" />
+                </motion.div>
+                <h4 className="text-lg font-bold text-foreground mb-2">{value.title}</h4>
+                <p className="text-sm text-foreground/60">{value.desc}</p>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </div>
+    </section>
+  )
+}

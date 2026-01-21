@@ -1,0 +1,189 @@
+"use client"
+
+import { useRef } from "react"
+import { motion, useScroll, useTransform } from "framer-motion"
+import { Sparkles } from "lucide-react"
+
+export default function AboutPageHero() {
+  const containerRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start start", "end start"],
+  })
+
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"])
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95])
+
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.15,
+        delayChildren: 0.2,
+      },
+    },
+  }
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.8, ease: [0.25, 0.1, 0.25, 1] },
+    },
+  }
+
+  const statVariants = {
+    hidden: { opacity: 0, scale: 0.8 },
+    visible: (i: number) => ({
+      opacity: 1,
+      scale: 1,
+      transition: {
+        delay: 0.6 + i * 0.1,
+        duration: 0.6,
+        ease: [0.25, 0.1, 0.25, 1],
+      },
+    }),
+  }
+
+  return (
+    <section
+      ref={containerRef}
+      className="relative min-h-[80vh] flex items-center justify-center overflow-hidden pt-24"
+    >
+      <motion.div className="absolute inset-0" style={{ y }}>
+        <motion.div
+          className="absolute top-1/4 left-1/4 w-96 h-96 bg-accent/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1, 1.2, 1],
+            opacity: [0.3, 0.5, 0.3],
+          }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        />
+        <motion.div
+          className="absolute bottom-1/4 right-1/4 w-80 h-80 bg-primary/10 rounded-full blur-3xl"
+          animate={{
+            scale: [1.2, 1, 1.2],
+            opacity: [0.5, 0.3, 0.5],
+          }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut", delay: 1 }}
+        />
+      </motion.div>
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(209,113,226,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(209,113,226,0.03)_1px,transparent_1px)] bg-[size:60px_60px]" />
+
+      <motion.div
+        className="absolute top-32 right-20 w-4 h-4 bg-accent rounded-full"
+        animate={{
+          y: [-20, 20, -20],
+          x: [-10, 10, -10],
+        }}
+        transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute bottom-40 left-20 w-6 h-6 border-2 border-chart-2 rounded-full"
+        animate={{
+          y: [20, -20, 20],
+          rotate: [0, 180, 360],
+        }}
+        transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      />
+      <motion.div
+        className="absolute top-1/2 right-32 w-3 h-3 bg-chart-2/50 rotate-45"
+        animate={{
+          y: [-15, 15, -15],
+          rotate: [45, 225, 405],
+        }}
+        transition={{ duration: 7, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+      />
+
+      <motion.div className="relative z-10 max-w-5xl mx-auto px-6 text-center" style={{ opacity, scale }}>
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
+          <motion.div
+            variants={itemVariants}
+            className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 border border-accent/20 rounded-full mb-8"
+            whileHover={{ scale: 1.05, borderColor: "rgba(209,113,226,0.5)" }}
+          >
+            <motion.div
+              animate={{ rotate: [0, 360] }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            >
+              <Sparkles className="w-4 h-4 text-accent" />
+            </motion.div>
+            <span className="text-accent text-sm font-medium">Our Story</span>
+          </motion.div>
+
+          <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+            <span className="text-foreground">We Are </span>
+            <motion.span
+              className="bg-gradient-to-r from-accent via-chart-2 to-accent bg-[length:200%_auto] bg-clip-text text-transparent inline-block"
+              animate={{ backgroundPosition: ["0% center", "200% center"] }}
+              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+            >
+              Creators
+            </motion.span>
+          </motion.h1>
+
+          <motion.p
+            variants={itemVariants}
+            className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto mb-12 leading-relaxed"
+          >
+            A passionate team of designers, developers, and dreamers dedicated to transforming ideas into extraordinary
+            digital experiences.
+          </motion.p>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
+            {[
+              { value: "10+", label: "Years Experience" },
+              { value: "250+", label: "Projects Delivered" },
+              { value: "120+", label: "Happy Clients" },
+              { value: "15+", label: "Awards Won" },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                custom={i}
+                variants={statVariants}
+                initial="hidden"
+                animate="visible"
+                whileHover={{ scale: 1.1, y: -5 }}
+                className="cursor-default"
+              >
+                <motion.div
+                  className="text-4xl md:text-5xl font-bold text-accent mb-2"
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  transition={{ delay: 0.8 + i * 0.1 }}
+                >
+                  {stat.value}
+                </motion.div>
+                <div className="text-foreground/60 text-sm">{stat.label}</div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+      </motion.div>
+
+      <motion.div
+        className="absolute bottom-8 left-1/2 -translate-x-1/2"
+        initial={{ opacity: 0, y: -20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+      >
+        <motion.div
+          className="w-6 h-10 border-2 border-foreground/20 rounded-full flex justify-center pt-2"
+          animate={{ y: [0, 5, 0] }}
+          transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+        >
+          <motion.div
+            className="w-1.5 h-3 bg-accent rounded-full"
+            animate={{ y: [0, 8, 0], opacity: [1, 0.5, 1] }}
+            transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+          />
+        </motion.div>
+      </motion.div>
+    </section>
+  )
+}

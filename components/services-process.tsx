@@ -1,0 +1,253 @@
+"use client"
+
+import { useRef, useState } from "react"
+import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import { MessageSquare, Search, PenTool, Rocket } from "lucide-react"
+
+const steps = [
+  {
+    icon: MessageSquare,
+    title: "Discovery",
+    description: "We start by understanding your vision, goals, and target audience through in-depth conversations.",
+    details:
+      "Every great project begins with a conversation. We dive deep into your brand, your challenges, and your aspirations.",
+  },
+  {
+    icon: Search,
+    title: "Research",
+    description: "Comprehensive market analysis and competitor research to inform our creative strategy.",
+    details:
+      "We analyze your industry, study your competitors, and identify opportunities to make your brand stand out.",
+  },
+  {
+    icon: PenTool,
+    title: "Design",
+    description: "Iterative design process with multiple concepts and refinements based on your feedback.",
+    details: "Our designers bring ideas to life through sketches, mockups, and prototypes, refining until perfection.",
+  },
+  {
+    icon: Rocket,
+    title: "Deliver",
+    description: "Final assets delivered with comprehensive guidelines and ongoing support for implementation.",
+    details:
+      "We hand over polished, production-ready assets complete with guidelines to ensure consistent brand application.",
+  },
+]
+
+export default function ServicesProcess() {
+  const sectionRef = useRef<HTMLDivElement>(null)
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const [activeStep, setActiveStep] = useState(0)
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start end", "end start"],
+  })
+
+  const backgroundY = useTransform(scrollYProgress, [0, 1], [0, 100])
+
+  return (
+    <section ref={sectionRef} className="py-32 px-6 relative overflow-hidden bg-card/30">
+      {/* Decorative shapes */}
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
+      />
+      <motion.div
+        style={{ y: backgroundY }}
+        className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-accent/20 to-transparent"
+      />
+
+      <div className="absolute inset-0 pointer-events-none">
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 6, repeat: Number.POSITIVE_INFINITY }}
+          className="absolute top-20 right-20 w-72 h-72 bg-accent/5 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ scale: [1, 1.3, 1] }}
+          transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
+          className="absolute bottom-20 left-20 w-96 h-96 bg-primary/5 rounded-full blur-3xl"
+        />
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-20"
+        >
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : {}}
+            transition={{ delay: 0.2 }}
+            className="text-accent text-sm font-semibold tracking-widest mb-4"
+          >
+            HOW WE WORK
+          </motion.p>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
+            Our Creative <span className="text-accent">Process</span>
+          </h2>
+          <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
+            A proven methodology that delivers exceptional results every time
+          </p>
+        </motion.div>
+
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+          {/* Steps Timeline */}
+          <div className="relative">
+            {/* Vertical line */}
+            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border" />
+            <motion.div
+              className="absolute left-6 top-0 w-0.5 bg-accent"
+              initial={{ height: 0 }}
+              animate={isInView ? { height: `${(activeStep / (steps.length - 1)) * 100}%` } : {}}
+              transition={{ duration: 0.7 }}
+            />
+
+            <div className="space-y-8">
+              {steps.map((step, index) => {
+                const Icon = step.icon
+                const isActive = index === activeStep
+                const isPast = index < activeStep
+                return (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, x: -50 }}
+                    animate={isInView ? { opacity: 1, x: 0 } : {}}
+                    transition={{ duration: 0.5, delay: index * 0.15 }}
+                    className="relative pl-16 cursor-pointer"
+                    onClick={() => setActiveStep(index)}
+                  >
+                    {/* Step circle */}
+                    <motion.div
+                      animate={{
+                        scale: isActive ? 1.1 : 1,
+                        backgroundColor: isActive
+                          ? "hsl(var(--accent))"
+                          : isPast
+                            ? "hsl(var(--accent) / 0.2)"
+                            : "hsl(var(--card))",
+                      }}
+                      whileHover={{ scale: 1.15 }}
+                      className={`absolute left-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border ${
+                        isActive || isPast ? "border-accent" : "border-border"
+                      }`}
+                    >
+                      <Icon
+                        className={`w-5 h-5 ${isActive ? "text-background" : isPast ? "text-accent" : "text-foreground/40"}`}
+                      />
+                    </motion.div>
+
+                    <motion.div
+                      whileHover={{ x: 8 }}
+                      animate={{
+                        backgroundColor: isActive ? "hsl(var(--accent) / 0.1)" : "transparent",
+                        borderColor: isActive ? "hsl(var(--accent) / 0.2)" : "transparent",
+                      }}
+                      className="p-6 rounded-xl border transition-all duration-300 hover:border-border"
+                    >
+                      <div className="flex items-center gap-3 mb-2">
+                        <motion.span
+                          animate={{ color: isActive ? "hsl(var(--accent))" : "hsl(var(--accent) / 0.7)" }}
+                          className="text-sm font-bold"
+                        >
+                          0{index + 1}
+                        </motion.span>
+                        <h3
+                          className={`text-xl font-bold transition-colors ${isActive ? "text-accent" : "text-foreground"}`}
+                        >
+                          {step.title}
+                        </h3>
+                      </div>
+                      <p className="text-foreground/60 text-sm">{step.description}</p>
+                    </motion.div>
+                  </motion.div>
+                )
+              })}
+            </div>
+          </div>
+
+          {/* Active Step Detail */}
+          <motion.div
+            initial={{ opacity: 0, y: 50 }}
+            animate={isInView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            <motion.div
+              layout
+              className="relative p-10 rounded-3xl bg-gradient-to-br from-card to-card/50 border border-border overflow-hidden"
+            >
+              {/* Background decoration */}
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY }}
+                className="absolute -top-20 -right-20 w-40 h-40 bg-accent/10 rounded-full blur-3xl"
+              />
+
+              <div className="relative z-10">
+                <motion.div
+                  key={activeStep}
+                  initial={{ scale: 0, rotate: -180 }}
+                  animate={{ scale: 1, rotate: 0 }}
+                  transition={{ type: "spring", stiffness: 200 }}
+                  className="w-20 h-20 bg-gradient-to-br from-accent to-chart-2 rounded-2xl flex items-center justify-center mb-8"
+                >
+                  {(() => {
+                    const Icon = steps[activeStep].icon
+                    return <Icon className="w-10 h-10 text-background" />
+                  })()}
+                </motion.div>
+
+                <motion.span
+                  key={`step-${activeStep}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  className="text-accent text-sm font-bold tracking-widest"
+                >
+                  STEP 0{activeStep + 1}
+                </motion.span>
+                <motion.h3
+                  key={`title-${activeStep}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 }}
+                  className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6"
+                >
+                  {steps[activeStep].title}
+                </motion.h3>
+                <motion.p
+                  key={`details-${activeStep}`}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 }}
+                  className="text-foreground/70 text-lg leading-relaxed mb-8"
+                >
+                  {steps[activeStep].details}
+                </motion.p>
+
+                {/* Progress dots */}
+                <div className="flex gap-2">
+                  {steps.map((_, i) => (
+                    <motion.button
+                      key={i}
+                      onClick={() => setActiveStep(i)}
+                      whileHover={{ scale: 1.2 }}
+                      whileTap={{ scale: 0.9 }}
+                      animate={{
+                        width: i === activeStep ? 32 : 8,
+                        backgroundColor: i === activeStep ? "hsl(var(--accent))" : "hsl(var(--foreground) / 0.2)",
+                      }}
+                      className="h-2 rounded-full transition-all duration-300"
+                    />
+                  ))}
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        </div>
+      </div>
+    </section>
+  )
+}
