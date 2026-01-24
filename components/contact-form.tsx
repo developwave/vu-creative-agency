@@ -1,24 +1,24 @@
-"use client"
+"use client";
 
-import type React from "react"
-import { useState, useRef } from "react"
-import { motion, useInView, AnimatePresence } from "framer-motion"
-import { Send, CheckCircle, Loader2 } from "lucide-react"
+import type React from "react";
+import { useState, useRef } from "react";
+import { motion, useInView, AnimatePresence } from "framer-motion";
+import { Send, CheckCircle, Loader2 } from "lucide-react";
 
 export default function ContactForm() {
-  const [isSubmitting, setIsSubmitting] = useState(false)
-  const [isSubmitted, setIsSubmitted] = useState(false)
-  const [focusedField, setFocusedField] = useState<string | null>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [focusedField, setFocusedField] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-50px" });
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    setIsSubmitting(true)
-    await new Promise((resolve) => setTimeout(resolve, 2000))
-    setIsSubmitting(false)
-    setIsSubmitted(true)
-  }
+    e.preventDefault();
+    setIsSubmitting(true);
+    await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsSubmitting(false);
+    setIsSubmitted(true);
+  };
 
   if (isSubmitted) {
     return (
@@ -35,7 +35,11 @@ export default function ContactForm() {
           animate={{ scale: 1 }}
           transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
         >
-          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ delay: 0.4, type: "spring" }}>
+          <motion.div
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ delay: 0.4, type: "spring" }}
+          >
             <CheckCircle className="w-10 h-10 text-green-500" />
           </motion.div>
         </motion.div>
@@ -64,7 +68,7 @@ export default function ContactForm() {
           Send another message
         </motion.button>
       </motion.div>
-    )
+    );
   }
 
   const formVariants = {
@@ -76,7 +80,7 @@ export default function ContactForm() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const fieldVariants = {
     hidden: { opacity: 0, y: 20 },
@@ -85,7 +89,7 @@ export default function ContactForm() {
       y: 0,
       transition: { duration: 0.5, ease: [0.25, 0.1, 0.25, 1] },
     },
-  }
+  };
 
   return (
     <motion.div
@@ -118,14 +122,23 @@ export default function ContactForm() {
         initial="hidden"
         animate={isInView ? "visible" : "hidden"}
       >
-        <motion.div variants={fieldVariants} className="grid sm:grid-cols-2 gap-6">
+        <motion.div
+          variants={fieldVariants}
+          className="grid sm:grid-cols-2 gap-6"
+        >
           <div className="relative">
-            <label htmlFor="name" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="name"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Name
             </label>
             <motion.div
               animate={{
-                boxShadow: focusedField === "name" ? "0 0 0 2px rgba(209, 113, 226, 0.3)" : "none",
+                boxShadow:
+                  focusedField === "name"
+                    ? "0 0 0 2px rgba(209, 113, 226, 0.3)"
+                    : "none",
               }}
               className="rounded-xl"
             >
@@ -141,12 +154,18 @@ export default function ContactForm() {
             </motion.div>
           </div>
           <div className="relative">
-            <label htmlFor="email" className="block text-sm font-medium text-foreground mb-2">
+            <label
+              htmlFor="email"
+              className="block text-sm font-medium text-foreground mb-2"
+            >
               Email
             </label>
             <motion.div
               animate={{
-                boxShadow: focusedField === "email" ? "0 0 0 2px rgba(209, 113, 226, 0.3)" : "none",
+                boxShadow:
+                  focusedField === "email"
+                    ? "0 0 0 2px rgba(209, 113, 226, 0.3)"
+                    : "none",
               }}
               className="rounded-xl"
             >
@@ -164,7 +183,10 @@ export default function ContactForm() {
         </motion.div>
 
         <motion.div variants={fieldVariants}>
-          <label htmlFor="company" className="block text-sm font-medium text-foreground mb-2">
+          <label
+            htmlFor="company"
+            className="block text-sm font-medium text-foreground mb-2"
+          >
             Company <span className="text-foreground/40">(optional)</span>
           </label>
           <input
@@ -178,7 +200,10 @@ export default function ContactForm() {
         </motion.div>
 
         <motion.div variants={fieldVariants}>
-          <label htmlFor="service" className="block text-sm font-medium text-foreground mb-2">
+          <label
+            htmlFor="service"
+            className="block text-sm font-medium text-foreground mb-2"
+          >
             What service are you interested in?
           </label>
           <select
@@ -197,24 +222,10 @@ export default function ContactForm() {
         </motion.div>
 
         <motion.div variants={fieldVariants}>
-          <label htmlFor="budget" className="block text-sm font-medium text-foreground mb-2">
-            Budget Range
-          </label>
-          <select
-            id="budget"
-            required
-            className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition appearance-none cursor-pointer"
+          <label
+            htmlFor="message"
+            className="block text-sm font-medium text-foreground mb-2"
           >
-            <option value="">Select your budget</option>
-            <option value="5k-10k">$5,000 - $10,000</option>
-            <option value="10k-25k">$10,000 - $25,000</option>
-            <option value="25k-50k">$25,000 - $50,000</option>
-            <option value="50k+">$50,000+</option>
-          </select>
-        </motion.div>
-
-        <motion.div variants={fieldVariants}>
-          <label htmlFor="message" className="block text-sm font-medium text-foreground mb-2">
             Project Details
           </label>
           <textarea
@@ -265,5 +276,5 @@ export default function ContactForm() {
         </motion.div>
       </motion.form>
     </motion.div>
-  )
+  );
 }

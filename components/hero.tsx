@@ -1,40 +1,46 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useRef } from "react"
-import { ArrowRight, Play } from "lucide-react"
-import { motion, useScroll, useTransform, useSpring, useMotionValue } from "framer-motion"
+import { useRef } from "react";
+import { ArrowRight, Play } from "lucide-react";
+import {
+  motion,
+  useScroll,
+  useTransform,
+  useSpring,
+  useMotionValue,
+} from "framer-motion";
 
 export default function Hero() {
-  const containerRef = useRef<HTMLDivElement>(null)
+  const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start start", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [0, 300])
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9])
-  const smoothY = useSpring(y, { stiffness: 100, damping: 30 })
+  const y = useTransform(scrollYProgress, [0, 1], [0, 300]);
+  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.9]);
+  const smoothY = useSpring(y, { stiffness: 100, damping: 30 });
 
-  const mouseX = useMotionValue(0)
-  const mouseY = useMotionValue(0)
-  const rotateX = useTransform(mouseY, [-300, 300], [5, -5])
-  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5])
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const rotateX = useTransform(mouseY, [-300, 300], [5, -5]);
+  const rotateY = useTransform(mouseX, [-300, 300], [-5, 5]);
 
   const handleMouseMove = (e: React.MouseEvent) => {
-    const rect = e.currentTarget.getBoundingClientRect()
-    const centerX = rect.left + rect.width / 2
-    const centerY = rect.top + rect.height / 2
-    mouseX.set(e.clientX - centerX)
-    mouseY.set(e.clientY - centerY)
-  }
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    mouseX.set(e.clientX - centerX);
+    mouseY.set(e.clientY - centerY);
+  };
 
   const handleMouseLeave = () => {
-    mouseX.set(0)
-    mouseY.set(0)
-  }
+    mouseX.set(0);
+    mouseY.set(0);
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -45,7 +51,7 @@ export default function Hero() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -57,7 +63,7 @@ export default function Hero() {
         ease: [0.25, 0.4, 0.25, 1],
       },
     },
-  }
+  };
 
   const floatingVariants = {
     animate: {
@@ -69,7 +75,7 @@ export default function Hero() {
         ease: "easeInOut",
       },
     },
-  }
+  };
 
   const imageVariants = {
     hidden: { opacity: 0, x: 100, scale: 0.9 },
@@ -83,14 +89,17 @@ export default function Hero() {
         delay: 0.4,
       },
     },
-  }
+  };
 
   return (
     <section
       ref={containerRef}
       className="min-h-screen flex items-center justify-center pt-24 px-6 overflow-hidden relative"
     >
-      <motion.div style={{ y: smoothY }} className="absolute inset-0 overflow-hidden pointer-events-none">
+      <motion.div
+        style={{ y: smoothY }}
+        className="absolute inset-0 overflow-hidden pointer-events-none"
+      >
         <motion.div
           animate={{ scale: [1, 1.2, 1], opacity: [0.1, 0.2, 0.1] }}
           transition={{ duration: 8, repeat: Number.POSITIVE_INFINITY }}
@@ -127,7 +136,11 @@ export default function Hero() {
         className="max-w-7xl w-full relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center"
       >
         {/* Left side - Text content */}
-        <motion.div onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} className="text-left">
+        <motion.div
+          onMouseMove={handleMouseMove}
+          onMouseLeave={handleMouseLeave}
+          className="text-left"
+        >
           <motion.div
             style={{ rotateX, rotateY, transformPerspective: 1000 }}
             transition={{ type: "spring", stiffness: 400, damping: 30 }}
@@ -136,7 +149,9 @@ export default function Hero() {
               variants={itemVariants}
               className="inline-block mb-6 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full"
             >
-              <p className="text-accent text-sm font-semibold tracking-widest">MEET VU CREATIVE</p>
+              <p className="text-accent text-sm font-semibold tracking-widest">
+                MEET VU CREATIVE
+              </p>
             </motion.div>
 
             <motion.h1
@@ -162,30 +177,46 @@ export default function Hero() {
               variants={itemVariants}
               className="text-lg md:text-xl text-foreground/60 max-w-xl mb-10 leading-relaxed"
             >
-              We craft stunning digital experiences through web design and graphics that tell your story, captivate your
-              audience, and drive results.
+              We craft stunning digital experiences through web design and
+              graphics that tell your story, captivate your audience, and drive
+              results.
             </motion.p>
 
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-start gap-4">
+            <motion.div
+              variants={itemVariants}
+              className="flex flex-col sm:flex-row items-start gap-4"
+            >
               <motion.button
-                whileHover={{ scale: 1.05, boxShadow: "0 20px 40px rgba(212, 0, 255, 0.3)" }}
+                whileHover={{
+                  scale: 1.05,
+                  boxShadow: "0 20px 40px rgba(212, 0, 255, 0.3)",
+                }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-accent text-background font-semibold rounded-xl flex items-center gap-2 group"
               >
                 View Our Work
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
-                  transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
+                  transition={{
+                    duration: 1.5,
+                    repeat: Number.POSITIVE_INFINITY,
+                  }}
                 >
                   <ArrowRight size={20} />
                 </motion.span>
               </motion.button>
               <motion.button
-                whileHover={{ scale: 1.05, backgroundColor: "rgba(212, 0, 255, 0.1)" }}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "rgba(212, 0, 255, 0.1)",
+                }}
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 border border-accent/30 text-accent font-semibold rounded-xl flex items-center gap-2 group"
               >
-                <motion.span whileHover={{ scale: 1.2 }} transition={{ type: "spring" }}>
+                <motion.span
+                  whileHover={{ scale: 1.2 }}
+                  transition={{ type: "spring" }}
+                >
                   <Play className="w-5 h-5" />
                 </motion.span>
                 Watch Showreel
@@ -195,7 +226,10 @@ export default function Hero() {
         </motion.div>
 
         {/* Right side - Image */}
-        <motion.div variants={imageVariants} className="relative lg:justify-self-end">
+        <motion.div
+          variants={imageVariants}
+          className="relative lg:justify-self-end"
+        >
           <motion.div
             whileHover={{ scale: 1.02, rotateY: -5 }}
             transition={{ type: "spring", stiffness: 300 }}
@@ -231,7 +265,9 @@ export default function Hero() {
                 <div className="flex items-center justify-between">
                   <div>
                     <p className="text-foreground font-semibold">10+ Years</p>
-                    <p className="text-foreground/60 text-sm">Crafting digital excellence</p>
+                    <p className="text-foreground/60 text-sm">
+                      Crafting digital excellence
+                    </p>
                   </div>
                   <div className="flex -space-x-2">
                     {[1, 2, 3].map((i) => (
@@ -253,7 +289,11 @@ export default function Hero() {
             {/* Decorative elements around image */}
             <motion.div
               animate={{ rotate: 360 }}
-              transition={{ duration: 20, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              transition={{
+                duration: 20,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
               className="absolute -top-6 -right-6 w-12 h-12 border-2 border-accent/30 rounded-full"
             />
             <motion.div
@@ -292,5 +332,5 @@ export default function Hero() {
         </motion.div>
       </motion.div>
     </section>
-  )
+  );
 }
