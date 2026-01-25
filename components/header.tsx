@@ -1,9 +1,10 @@
 "use client"
 
 import { useEffect, useState } from "react"
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { Menu, X } from "lucide-react"
+import { Link, usePathname } from "@/i18n/navigation"
+import { useRouter as useNextRouter } from "next/navigation"
+import { useTranslations, useLocale } from "next-intl"
+import { Menu, X, Globe } from "lucide-react"
 import { ThemeToggle } from "@/components/theme-toggle"
 import { motion, AnimatePresence } from "framer-motion"
 
@@ -11,6 +12,9 @@ export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
   const pathname = usePathname()
+  const nextRouter = useNextRouter()
+  const locale = useLocale()
+  const t = useTranslations("header")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -20,11 +24,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  const switchLocale = (newLocale: string) => {
+    // pathname from usePathname() already excludes the locale prefix
+    // so we just need to add the new locale prefix
+    const newPath = `/${newLocale}${pathname === "/" ? "" : pathname}`
+    nextRouter.push(newPath)
+  }
+
   const navLinks = [
-    { href: "/gallery", label: "Gallery" },
-    { href: "/services", label: "Services" },
-    { href: "/about", label: "About" },
-    { href: "/contact", label: "Contact" },
+    { href: "/gallery", label: t("gallery") },
+    { href: "/services", label: t("services") },
+    { href: "/about", label: t("about") },
+    { href: "/contact", label: t("contact") },
   ]
 
   return (
@@ -57,17 +68,36 @@ export default function Header() {
 
           <ThemeToggle />
 
+          {/* Language Switcher */}
+          <button
+            onClick={() => switchLocale(locale === "en" ? "es" : "en")}
+            className="flex items-center gap-1.5 px-3 py-1.5 text-foreground/70 hover:text-accent transition rounded-md hover:bg-accent/10"
+            title={locale === "en" ? "Cambiar a Español" : "Switch to English"}
+          >
+            <Globe size={18} />
+            <span className="text-sm font-medium uppercase">{locale}</span>
+          </button>
+
           <Link
             href="/contact"
             className="px-6 py-2 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition"
           >
-            Get in Touch
+            {t("cta")}
           </Link>
         </div>
 
         {/* Mobile Menu Button and Theme Toggle */}
         <div className="md:hidden flex items-center gap-3">
           <ThemeToggle />
+          {/* Language Switcher Mobile */}
+          <button
+            onClick={() => switchLocale(locale === "en" ? "es" : "en")}
+            className="flex items-center gap-1 px-2 py-1.5 text-foreground/70 hover:text-accent transition"
+            title={locale === "en" ? "Cambiar a Español" : "Switch to English"}
+          >
+            <Globe size={18} />
+            <span className="text-xs font-medium uppercase">{locale}</span>
+          </button>
           <button className="text-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
@@ -111,7 +141,7 @@ export default function Header() {
                 className="block px-6 py-3 bg-accent text-accent-foreground font-medium rounded-lg hover:bg-accent/90 transition text-center"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Get in Touch
+                {t("cta")}
               </Link>
             </motion.div>
           </motion.div>

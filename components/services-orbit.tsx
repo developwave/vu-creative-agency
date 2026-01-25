@@ -3,19 +3,12 @@
 import { useRef, useState } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { Palette, Globe, Smartphone, Sparkles, Camera, PenTool, Layers, Zap } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const services = [
-  { name: "Web Design", icon: Globe, description: "Beautiful, responsive websites" },
-  { name: "Branding", icon: Sparkles, description: "Identity that stands out" },
-  { name: "UI/UX", icon: Smartphone, description: "Intuitive user experiences" },
-  { name: "Graphics", icon: Palette, description: "Stunning visual content" },
-  { name: "Photography", icon: Camera, description: "Professional imagery" },
-  { name: "Illustration", icon: PenTool, description: "Custom artwork & icons" },
-  { name: "Motion", icon: Layers, description: "Engaging animations" },
-  { name: "Marketing", icon: Zap, description: "Campaigns that convert" },
-]
+const serviceIcons = [Globe, Sparkles, Smartphone, Palette, Camera, PenTool, Layers, Zap]
 
 export default function ServicesOrbit() {
+  const t = useTranslations("homeServices")
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
   const [activeIndex, setActiveIndex] = useState<number | null>(null)
@@ -40,8 +33,8 @@ export default function ServicesOrbit() {
           transition={{ duration: 0.8 }}
           className="text-center mb-20"
         >
-          <p className="text-accent text-sm font-medium tracking-[0.2em] mb-4">WHAT WE DO</p>
-          <h2 className="text-4xl md:text-6xl font-bold text-foreground">Our Services</h2>
+          <p className="text-accent text-sm font-medium tracking-[0.2em] mb-4">{t("sectionLabel")}</p>
+          <h2 className="text-4xl md:text-6xl font-bold text-foreground">{t("title")}</h2>
         </motion.div>
 
         {/* Main content grid */}
@@ -59,7 +52,7 @@ export default function ServicesOrbit() {
               <div className="absolute inset-0 rounded-full border border-border/30" />
 
               {/* Service dots on the circle */}
-              {services.map((_, index) => {
+              {serviceIcons.map((_, index) => {
                 const angle = (index * 45 - 90) * (Math.PI / 180)
                 const x = 50 + 48 * Math.cos(angle)
                 const y = 50 + 48 * Math.sin(angle)
@@ -134,22 +127,22 @@ export default function ServicesOrbit() {
                     className="flex flex-col items-center"
                   >
                     {(() => {
-                      const Icon = services[activeIndex].icon
+                      const Icon = serviceIcons[activeIndex]
                       return <Icon className="w-8 h-8 text-accent mb-2" />
                     })()}
-                    <span className="text-sm font-semibold text-foreground">{services[activeIndex].name}</span>
+                    <span className="text-sm font-semibold text-foreground">{t(`items.${activeIndex}.name`)}</span>
                   </motion.div>
                 ) : (
                   <div className="flex flex-col items-center">
                     <Sparkles className="w-8 h-8 text-accent mb-2" />
-                    <span className="text-sm font-semibold text-foreground">8 Services</span>
+                    <span className="text-sm font-semibold text-foreground">{t("servicesCount")}</span>
                   </div>
                 )}
               </motion.div>
             </div>
 
             {/* Floating service labels around the circle */}
-            {services.map((service, index) => {
+            {serviceIcons.map((_, index) => {
               const angle = (index * 45 - 90) * (Math.PI / 180)
               const radius = 58
               const x = 50 + radius * Math.cos(angle)
@@ -157,7 +150,7 @@ export default function ServicesOrbit() {
 
               return (
                 <motion.button
-                  key={service.name}
+                  key={index}
                   className="absolute text-xs md:text-sm font-medium text-muted-foreground hover:text-accent transition-colors duration-300 whitespace-nowrap"
                   style={{
                     left: `${x}%`,
@@ -171,7 +164,7 @@ export default function ServicesOrbit() {
                   transition={{ delay: 0.3 + index * 0.1 }}
                   whileHover={{ scale: 1.1 }}
                 >
-                  {service.name}
+                  {t(`items.${index}.name`)}
                 </motion.button>
               )
             })}
@@ -179,13 +172,12 @@ export default function ServicesOrbit() {
 
           {/* Right side - Service cards list */}
           <div className="space-y-4">
-            {services.map((service, index) => {
-              const Icon = service.icon
+            {serviceIcons.map((Icon, index) => {
               const isActive = activeIndex === index
 
               return (
                 <motion.div
-                  key={service.name}
+                  key={index}
                   initial={{ opacity: 0, x: 30 }}
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.1 * index }}
@@ -210,9 +202,9 @@ export default function ServicesOrbit() {
                     <h3
                       className={`font-semibold transition-colors duration-300 ${isActive ? "text-accent" : "text-foreground"}`}
                     >
-                      {service.name}
+                      {t(`items.${index}.name`)}
                     </h3>
-                    <p className="text-sm text-muted-foreground">{service.description}</p>
+                    <p className="text-sm text-muted-foreground">{t(`items.${index}.description`)}</p>
                   </div>
                   <motion.div
                     className="w-2 h-2 rounded-full bg-accent"

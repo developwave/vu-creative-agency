@@ -3,8 +3,10 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Zap } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function ServicesPageHero() {
+  const t = useTranslations("servicesHero")
   const sectionRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: sectionRef,
@@ -82,7 +84,7 @@ export default function ServicesPageHero() {
             >
               <Zap className="w-4 h-4 text-accent" />
             </motion.div>
-            <span className="text-accent text-sm font-medium">What We Do</span>
+            <span className="text-accent text-sm font-medium">{t("badge")}</span>
           </motion.div>
 
           <motion.h1
@@ -91,13 +93,13 @@ export default function ServicesPageHero() {
             transition={{ delay: 0.3, duration: 0.6 }}
             className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight"
           >
-            <span className="text-foreground">Creative </span>
+            <span className="text-foreground">{t("titleLine1")} </span>
             <motion.span
               className="bg-gradient-to-r from-accent via-chart-2 to-accent bg-[length:200%_auto] bg-clip-text text-transparent"
               animate={{ backgroundPosition: ["0%", "200%"] }}
               transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             >
-              Services
+              {t("titleLine2")}
             </motion.span>
           </motion.h1>
 
@@ -107,8 +109,7 @@ export default function ServicesPageHero() {
             transition={{ delay: 0.5 }}
             className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            From stunning visuals to seamless digital experiences, we offer comprehensive creative solutions that make
-            your brand unforgettable.
+            {t("subtitle")}
           </motion.p>
 
           {/* Service Pills with staggered animation */}
@@ -121,9 +122,9 @@ export default function ServicesPageHero() {
             }}
             className="flex flex-wrap justify-center gap-3 mt-12"
           >
-            {["Graphic Design", "Web Design", "Branding", "UI/UX", "Motion", "Photography"].map((service) => (
+            {(t.raw("pills") as string[]).map((service, index) => (
               <motion.div
-                key={service}
+                key={index}
                 variants={{
                   hidden: { opacity: 0, y: 20, scale: 0.8 },
                   visible: { opacity: 1, y: 0, scale: 1 },

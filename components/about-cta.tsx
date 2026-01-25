@@ -1,11 +1,13 @@
 "use client"
 
 import { useRef } from "react"
-import Link from "next/link"
+import { Link } from "@/i18n/navigation"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { ArrowRight } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function AboutCta() {
+  const t = useTranslations("aboutCta")
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
@@ -71,14 +73,14 @@ export default function AboutCta() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Ready to Create
+              {t("titleLine1")}
               <motion.span
                 className="block text-accent"
                 initial={{ opacity: 0, x: -20 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.8, delay: 0.4 }}
               >
-                Something Amazing?
+                {t("titleLine2")}
               </motion.span>
             </motion.h2>
 
@@ -88,7 +90,7 @@ export default function AboutCta() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.5 }}
             >
-              Let's bring your vision to life. Get in touch and let's start building something extraordinary together.
+              {t("subtitle")}
             </motion.p>
 
             <motion.div
@@ -102,7 +104,7 @@ export default function AboutCta() {
                   href="/contact"
                   className="group inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-background font-semibold rounded-xl hover:bg-accent/90 transition-all"
                 >
-                  Start a Project
+                  {t("primary")}
                   <motion.span
                     animate={{ x: [0, 5, 0] }}
                     transition={{ duration: 1.5, repeat: Number.POSITIVE_INFINITY }}
@@ -117,7 +119,7 @@ export default function AboutCta() {
                   href="/gallery"
                   className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-background/50 backdrop-blur-sm border border-border text-foreground font-semibold rounded-xl hover:border-accent/50 hover:text-accent transition-all"
                 >
-                  View Our Work
+                  {t("secondary")}
                 </Link>
               </motion.div>
             </motion.div>

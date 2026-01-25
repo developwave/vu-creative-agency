@@ -11,8 +11,10 @@ import {
   useSpring,
   useMotionValue,
 } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function Hero() {
+  const t = useTranslations("hero");
   const containerRef = useRef<HTMLDivElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -150,7 +152,7 @@ export default function Hero() {
               className="inline-block mb-6 px-4 py-2 bg-accent/10 border border-accent/30 rounded-full"
             >
               <p className="text-accent text-sm font-semibold tracking-widest">
-                MEET VU CREATIVE
+                {t("badge")}
               </p>
             </motion.div>
 
@@ -163,13 +165,13 @@ export default function Hero() {
                 whileHover={{ scale: 1.05 }}
                 transition={{ type: "spring", stiffness: 400 }}
               >
-                Design That
+                {t("titleLine1")}
               </motion.span>
               <motion.span
                 className="block bg-gradient-to-r from-accent via-pink-500 to-accent bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient"
                 whileHover={{ scale: 1.02 }}
               >
-                Moves You
+                {t("titleLine2")}
               </motion.span>
             </motion.h1>
 
@@ -177,9 +179,7 @@ export default function Hero() {
               variants={itemVariants}
               className="text-lg md:text-xl text-foreground/60 max-w-xl mb-10 leading-relaxed"
             >
-              We craft stunning digital experiences through web design and
-              graphics that tell your story, captivate your audience, and drive
-              results.
+              {t("description")}
             </motion.p>
 
             <motion.div
@@ -194,7 +194,7 @@ export default function Hero() {
                 whileTap={{ scale: 0.95 }}
                 className="px-8 py-4 bg-accent text-background font-semibold rounded-xl flex items-center gap-2 group"
               >
-                View Our Work
+                {t("ctaPrimary")}
                 <motion.span
                   animate={{ x: [0, 5, 0] }}
                   transition={{
@@ -219,7 +219,7 @@ export default function Hero() {
                 >
                   <Play className="w-5 h-5" />
                 </motion.span>
-                Watch Showreel
+                {t("ctaSecondary")}
               </motion.button>
             </motion.div>
           </motion.div>
@@ -250,10 +250,10 @@ export default function Hero() {
                 animate={{ scale: 1 }}
                 transition={{ duration: 1.5, ease: "easeOut" }}
                 src="/modern-creative-agency-workspace-with-designers.jpg"
-                alt="VU Creative Agency workspace"
+                alt={t("imageAlt")}
                 className="w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/80 via-transparent to-transparent" />
 
               {/* Floating badge on image */}
               <motion.div
@@ -264,9 +264,11 @@ export default function Hero() {
               >
                 <div className="flex items-center justify-between">
                   <div>
-                    <p className="text-foreground font-semibold">10+ Years</p>
+                    <p className="text-foreground font-semibold">
+                      {t("yearsLabel")}
+                    </p>
                     <p className="text-foreground/60 text-sm">
-                      Crafting digital excellence
+                      {t("yearsDescription")}
                     </p>
                   </div>
                   <div className="flex -space-x-2">
@@ -317,7 +319,7 @@ export default function Hero() {
           transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           className="text-foreground/40 text-xs tracking-widest"
         >
-          SCROLL
+          {t("scroll")}
         </motion.span>
         <motion.div
           animate={{ y: [0, 8, 0] }}

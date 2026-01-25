@@ -1,21 +1,23 @@
-"use client"
+"use client";
 
-import { useRef } from "react"
-import Image from "next/image"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useRef } from "react";
+import Image from "next/image";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function AboutStory() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const t = useTranslations("aboutStory");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"])
-  const contentY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"])
-  const floatingCardY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"])
+  const imageY = useTransform(scrollYProgress, [0, 1], ["10%", "-10%"]);
+  const contentY = useTransform(scrollYProgress, [0, 1], ["5%", "-5%"]);
+  const floatingCardY = useTransform(scrollYProgress, [0, 1], ["20%", "-20%"]);
 
   return (
     <section ref={sectionRef} className="py-32 px-6 overflow-hidden">
@@ -39,7 +41,7 @@ export default function AboutStory() {
                 fill
                 className="object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/80 via-transparent to-transparent" />
             </motion.div>
 
             <motion.div
@@ -47,7 +49,11 @@ export default function AboutStory() {
               style={{ y: floatingCardY }}
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
-              transition={{ duration: 0.8, delay: 0.4, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: 0.4,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               whileHover={{
                 scale: 1.05,
                 boxShadow: "0 25px 50px -12px rgba(209, 113, 226, 0.25)",
@@ -60,9 +66,11 @@ export default function AboutStory() {
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.8 }}
               >
-                2014
+                {t("founded")}
               </motion.div>
-              <div className="text-foreground/60 text-sm">Founded in NYC</div>
+              <div className="text-foreground/60 text-sm">
+                {t("foundedLabel")}
+              </div>
             </motion.div>
 
             <motion.div
@@ -74,7 +82,11 @@ export default function AboutStory() {
             <motion.div
               className="absolute -bottom-4 -left-4 w-16 h-16 bg-accent/20 rounded-full blur-xl"
               animate={{ scale: [1, 1.3, 1] }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "easeInOut",
+              }}
             />
           </motion.div>
 
@@ -85,15 +97,14 @@ export default function AboutStory() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              The Story Behind
+              {t("titleLine1")}
               <motion.span
                 className="text-accent"
                 initial={{ opacity: 0 }}
                 animate={isInView ? { opacity: 1 } : {}}
                 transition={{ delay: 0.6 }}
               >
-                {" "}
-                VU Creative
+                {t("titleLine2")}
               </motion.span>
             </motion.h2>
 
@@ -103,18 +114,14 @@ export default function AboutStory() {
               animate={isInView ? { opacity: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              {[
-                "VU Creative Agency was born from a simple belief: great design has the power to transform businesses and connect people in meaningful ways.",
-                "What started as a small studio with just three passionate designers has evolved into a full-service creative powerhouse, working with brands across the globe to bring their visions to life.",
-                "Our journey has been defined by curiosity, collaboration, and an unwavering commitment to excellence. We don't just create designs—we craft experiences that resonate, inspire, and drive results.",
-              ].map((text, i) => (
+              {[0, 1, 2].map((i) => (
                 <motion.p
                   key={i}
                   initial={{ opacity: 0, y: 20 }}
                   animate={isInView ? { opacity: 1, y: 0 } : {}}
                   transition={{ duration: 0.6, delay: 0.5 + i * 0.15 }}
                 >
-                  {text}
+                  {t(`paragraphs.${i}`)}
                 </motion.p>
               ))}
             </motion.div>
@@ -132,7 +139,11 @@ export default function AboutStory() {
                     className="w-12 h-12 rounded-full border-2 border-background bg-gradient-to-br from-accent/60 to-chart-2/60 flex items-center justify-center text-xs font-bold text-foreground"
                     initial={{ opacity: 0, scale: 0 }}
                     animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 1 + i * 0.1, type: "spring", stiffness: 200 }}
+                    transition={{
+                      delay: 1 + i * 0.1,
+                      type: "spring",
+                      stiffness: 200,
+                    }}
                     whileHover={{ scale: 1.2, zIndex: 10 }}
                   >
                     {i}
@@ -140,13 +151,17 @@ export default function AboutStory() {
                 ))}
               </div>
               <div>
-                <div className="text-foreground font-semibold">15+ Team Members</div>
-                <div className="text-foreground/60 text-sm">Across 4 continents</div>
+                <div className="text-foreground font-semibold">
+                  {t("teamCount")}
+                </div>
+                <div className="text-foreground/60 text-sm">
+                  {t("teamSpread")}
+                </div>
               </div>
             </motion.div>
           </motion.div>
         </div>
       </div>
     </section>
-  )
+  );
 }

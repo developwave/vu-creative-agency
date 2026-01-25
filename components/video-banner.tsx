@@ -1,42 +1,44 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { Play, Pause, Volume2, VolumeX } from "lucide-react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useRef, useState } from "react";
+import { Play, Pause, Volume2, VolumeX } from "lucide-react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function VideoBanner() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [isPlaying, setIsPlaying] = useState(true)
-  const [isMuted, setIsMuted] = useState(true)
-  const videoRef = useRef<HTMLVideoElement>(null)
+  const t = useTranslations("videoBanner");
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [isPlaying, setIsPlaying] = useState(true);
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const y = useTransform(scrollYProgress, [0, 1], [100, -100])
-  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0])
-  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9])
+  const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
+  const opacity = useTransform(scrollYProgress, [0, 0.3, 0.7, 1], [0, 1, 1, 0]);
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.9, 1, 0.9]);
 
   const togglePlay = () => {
     if (videoRef.current) {
       if (isPlaying) {
-        videoRef.current.pause()
+        videoRef.current.pause();
       } else {
-        videoRef.current.play()
+        videoRef.current.play();
       }
-      setIsPlaying(!isPlaying)
+      setIsPlaying(!isPlaying);
     }
-  }
+  };
 
   const toggleMute = () => {
     if (videoRef.current) {
-      videoRef.current.muted = !isMuted
-      setIsMuted(!isMuted)
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
     }
-  }
+  };
 
   return (
     <section ref={sectionRef} className="relative py-32 overflow-hidden">
@@ -52,13 +54,15 @@ export default function VideoBanner() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <p className="text-accent text-sm font-semibold tracking-widest mb-4">SEE US IN ACTION</p>
+          <p className="text-accent text-sm font-semibold tracking-widest mb-4">
+            {t("sectionLabel")}
+          </p>
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Where Creativity
-            <span className="block text-accent">Comes to Life</span>
+            {t("titleLine1")}
+            <span className="block text-accent">{t("titleLine2")}</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            Take a glimpse into our creative process and see how we transform ideas into stunning visual experiences.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -73,11 +77,13 @@ export default function VideoBanner() {
             {/* Video Placeholder - Replace with actual video */}
             <div
               className="w-full h-full bg-cover bg-center"
-              style={{ backgroundImage: `url('/creative-agency-showreel-dark-cinematic.jpg')` }}
+              style={{
+                backgroundImage: `url('/creative-agency-showreel-dark-cinematic.jpg')`,
+              }}
             />
 
             {/* Video Overlay with Gradient */}
-            <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-background/30" />
+            <div className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/80 via-transparent to-background/30" />
 
             {/* Animated Grid Pattern */}
             <div className="absolute inset-0 opacity-10">
@@ -132,8 +138,12 @@ export default function VideoBanner() {
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.5 }}
               >
-                <p className="text-foreground/60 text-sm uppercase tracking-widest mb-2">Agency Showreel</p>
-                <h3 className="text-2xl md:text-3xl font-bold text-foreground">2024 Creative Highlights</h3>
+                <p className="text-foreground/60 text-sm uppercase tracking-widest mb-2">
+                  {t("showreelLabel")}
+                </p>
+                <h3 className="text-2xl md:text-3xl font-bold text-foreground">
+                  {t("showreelTitle")}
+                </h3>
               </motion.div>
             </div>
           </motion.div>
@@ -145,8 +155,10 @@ export default function VideoBanner() {
             transition={{ delay: 0.6 }}
             className="absolute -left-4 md:-left-8 top-1/4 bg-card/80 backdrop-blur-sm border border-accent/20 rounded-2xl p-4 md:p-6 shadow-xl"
           >
-            <div className="text-3xl md:text-4xl font-bold text-accent mb-1">50+</div>
-            <div className="text-sm text-foreground/60">Videos Produced</div>
+            <div className="text-3xl md:text-4xl font-bold text-accent mb-1">
+              {t("stat1Value")}
+            </div>
+            <div className="text-sm text-foreground/60">{t("stat1Label")}</div>
           </motion.div>
 
           <motion.div
@@ -155,8 +167,10 @@ export default function VideoBanner() {
             transition={{ delay: 0.8 }}
             className="absolute -right-4 md:-right-8 bottom-1/4 bg-card/80 backdrop-blur-sm border border-accent/20 rounded-2xl p-4 md:p-6 shadow-xl"
           >
-            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">1M+</div>
-            <div className="text-sm text-foreground/60">Views Generated</div>
+            <div className="text-3xl md:text-4xl font-bold text-primary mb-1">
+              {t("stat2Value")}
+            </div>
+            <div className="text-sm text-foreground/60">{t("stat2Label")}</div>
           </motion.div>
         </motion.div>
 
@@ -167,12 +181,7 @@ export default function VideoBanner() {
           transition={{ delay: 0.4 }}
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-16"
         >
-          {[
-            { label: "Motion Graphics", desc: "Stunning animations" },
-            { label: "Brand Films", desc: "Compelling stories" },
-            { label: "Product Videos", desc: "Showcase excellence" },
-            { label: "Social Content", desc: "Viral-worthy clips" },
-          ].map((item, i) => (
+          {[0, 1, 2, 3].map((i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 20 }}
@@ -181,12 +190,16 @@ export default function VideoBanner() {
               whileHover={{ y: -5 }}
               className="text-center p-6 bg-card/30 backdrop-blur-sm border border-accent/10 rounded-2xl hover:border-accent/30 transition-all"
             >
-              <h4 className="text-lg font-semibold text-foreground mb-1">{item.label}</h4>
-              <p className="text-sm text-foreground/60">{item.desc}</p>
+              <h4 className="text-lg font-semibold text-foreground mb-1">
+                {t(`features.${i}.label`)}
+              </h4>
+              <p className="text-sm text-foreground/60">
+                {t(`features.${i}.desc`)}
+              </p>
             </motion.div>
           ))}
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

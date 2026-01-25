@@ -3,8 +3,10 @@
 import { useRef } from "react"
 import { ArrowRight, Sparkles } from "lucide-react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
+import { useTranslations } from "next-intl"
 
 export default function CTA() {
+  const t = useTranslations("cta")
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
@@ -83,7 +85,7 @@ export default function CTA() {
             whileHover={{ scale: 1.05 }}
             transition={{ type: "spring", stiffness: 300 }}
           >
-            Ready to Transform
+            {t("titleLine1")}
           </motion.span>
           <motion.span
             className="block text-accent"
@@ -96,7 +98,7 @@ export default function CTA() {
               WebkitTextFillColor: "transparent",
             }}
           >
-            Your Brand?
+            {t("titleLine2")}
           </motion.span>
         </motion.h2>
 
@@ -104,8 +106,7 @@ export default function CTA() {
           variants={itemVariants}
           className="text-lg text-foreground/60 mb-12 max-w-2xl mx-auto leading-relaxed"
         >
-          Let's collaborate and create something extraordinary. Get in touch with our team today to discuss your
-          project.
+          {t("description")}
         </motion.p>
 
         <motion.div variants={itemVariants} className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -120,7 +121,7 @@ export default function CTA() {
               whileHover={{ x: 0 }}
               transition={{ duration: 0.3 }}
             />
-            <span className="relative z-10">Start Your Project</span>
+            <span className="relative z-10">{t("primary")}</span>
             <motion.span
               className="relative z-10"
               animate={{ x: [0, 5, 0] }}
@@ -135,7 +136,7 @@ export default function CTA() {
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 border border-accent/30 text-accent font-semibold rounded-xl w-full sm:w-auto"
           >
-            Schedule a Call
+            {t("secondary")}
           </motion.button>
         </motion.div>
 
@@ -145,7 +146,7 @@ export default function CTA() {
             transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY }}
             className="text-foreground/40 text-sm mb-6"
           >
-            TRUSTED BY LEADING BRANDS
+            {t("trustedBy")}
           </motion.p>
           <div className="flex justify-center items-center gap-8 flex-wrap">
             {["Brand A", "Brand B", "Brand C", "Brand D"].map((brand, i) => (

@@ -1,41 +1,23 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import Image from "next/image"
-import { motion, useInView } from "framer-motion"
-import { Linkedin, Twitter, Dribbble } from "lucide-react"
+import { useRef, useState } from "react";
+import Image from "next/image";
+import { motion, useInView } from "framer-motion";
+import { Linkedin, Twitter, Dribbble } from "lucide-react";
+import { useTranslations } from "next-intl";
 
-const team = [
-  {
-    name: "Marcus Chen",
-    role: "Creative Director",
-    image: "/professional-headshot-creative-director-male.jpg",
-    bio: "15+ years leading creative teams for global brands.",
-  },
-  {
-    name: "Sarah Williams",
-    role: "Lead Designer",
-    image: "/female-designer-headshot.png",
-    bio: "Award-winning visual designer with a passion for typography.",
-  },
-  {
-    name: "David Park",
-    role: "Motion Designer",
-    image: "/professional-headshot-male-motion-designer.jpg",
-    bio: "Bringing brands to life through dynamic animations.",
-  },
-  {
-    name: "Emma Rodriguez",
-    role: "Brand Strategist",
-    image: "/professional-headshot-female-brand-strategist.jpg",
-    bio: "Crafting brand stories that resonate and convert.",
-  },
-]
+const teamImages = [
+  "/professional-headshot-creative-director-male.jpg",
+  "/female-designer-headshot.png",
+  "/professional-headshot-male-motion-designer.jpg",
+  "/professional-headshot-female-brand-strategist.jpg",
+];
 
 export default function AboutTeam() {
-  const sectionRef = useRef<HTMLElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const t = useTranslations("aboutTeam");
+  const sectionRef = useRef<HTMLElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   return (
     <section
@@ -51,21 +33,25 @@ export default function AboutTeam() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Meet the <span className="text-accent">Team</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h2>
           <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-            The creative minds behind VU Creative Agency. We're a diverse group united by our love for great design.
+            {t("subtitle")}
           </p>
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {team.map((member, i) => (
+          {teamImages.map((image, i) => (
             <motion.div
               key={i}
               className="group"
               initial={{ opacity: 0, y: 60 }}
               animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.8, delay: i * 0.15, ease: [0.25, 0.1, 0.25, 1] }}
+              transition={{
+                duration: 0.8,
+                delay: i * 0.15,
+                ease: [0.25, 0.1, 0.25, 1],
+              }}
               onMouseEnter={() => setHoveredIndex(i)}
               onMouseLeave={() => setHoveredIndex(null)}
             >
@@ -75,7 +61,12 @@ export default function AboutTeam() {
                 transition={{ duration: 0.4 }}
               >
                 <div className="aspect-[3/4] relative">
-                  <Image src={member.image || "/placeholder.svg"} alt={member.name} fill className="object-cover" />
+                  <Image
+                    src={image || "/placeholder.svg"}
+                    alt={t(`members.${i}.name`)}
+                    fill
+                    className="object-cover"
+                  />
 
                   <motion.div
                     className="absolute inset-0"
@@ -85,7 +76,7 @@ export default function AboutTeam() {
                 </div>
 
                 <motion.div
-                  className="absolute inset-0 bg-gradient-to-t from-background via-background/20 to-transparent flex items-end justify-center pb-6"
+                  className="absolute inset-0 bg-gradient-to-t from-gradient-overlay via-background/20 to-transparent flex items-end justify-center pb-6"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === i ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
@@ -129,14 +120,18 @@ export default function AboutTeam() {
                 animate={{ x: hoveredIndex === i ? 5 : 0 }}
                 transition={{ duration: 0.3 }}
               >
-                {member.name}
+                {t(`members.${i}.name`)}
               </motion.h3>
-              <div className="text-accent text-sm font-medium mb-2">{member.role}</div>
-              <p className="text-foreground/60 text-sm">{member.bio}</p>
+              <div className="text-accent text-sm font-medium mb-2">
+                {t(`members.${i}.role`)}
+              </div>
+              <p className="text-foreground/60 text-sm">
+                {t(`members.${i}.bio`)}
+              </p>
             </motion.div>
           ))}
         </div>
       </div>
     </section>
-  )
+  );
 }

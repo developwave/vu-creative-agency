@@ -4,8 +4,10 @@ import type React from "react";
 import { useState, useRef } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Send, CheckCircle, Loader2 } from "lucide-react";
+import { useTranslations } from "next-intl";
 
 export default function ContactForm() {
+  const t = useTranslations("contactForm");
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [focusedField, setFocusedField] = useState<string | null>(null);
@@ -49,7 +51,7 @@ export default function ContactForm() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3 }}
         >
-          Message Sent!
+          {t("successTitle")}
         </motion.h3>
         <motion.p
           className="text-foreground/60 mb-8"
@@ -57,7 +59,7 @@ export default function ContactForm() {
           animate={{ opacity: 1 }}
           transition={{ delay: 0.4 }}
         >
-          Thanks for reaching out. We'll get back to you within 24 hours.
+          {t("successMessage")}
         </motion.p>
         <motion.button
           onClick={() => setIsSubmitted(false)}
@@ -65,7 +67,7 @@ export default function ContactForm() {
           whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
         >
-          Send another message
+          {t("sendAnother")}
         </motion.button>
       </motion.div>
     );
@@ -104,7 +106,7 @@ export default function ContactForm() {
         animate={isInView ? { opacity: 1, x: 0 } : {}}
         transition={{ delay: 0.1 }}
       >
-        Send us a message
+        {t("title")}
       </motion.h2>
       <motion.p
         className="text-foreground/60 mb-8"
@@ -112,7 +114,7 @@ export default function ContactForm() {
         animate={isInView ? { opacity: 1 } : {}}
         transition={{ delay: 0.2 }}
       >
-        Fill out the form below and we'll get back to you as soon as possible.
+        {t("subtitle")}
       </motion.p>
 
       <motion.form
@@ -131,7 +133,7 @@ export default function ContactForm() {
               htmlFor="name"
               className="block text-sm font-medium text-foreground mb-2"
             >
-              Name
+              {t("nameLabel")}
             </label>
             <motion.div
               animate={{
@@ -149,7 +151,7 @@ export default function ContactForm() {
                 onFocus={() => setFocusedField("name")}
                 onBlur={() => setFocusedField(null)}
                 className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-foreground/40 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
-                placeholder="John Doe"
+                placeholder={t("namePlaceholder")}
               />
             </motion.div>
           </div>
@@ -158,7 +160,7 @@ export default function ContactForm() {
               htmlFor="email"
               className="block text-sm font-medium text-foreground mb-2"
             >
-              Email
+              {t("emailLabel")}
             </label>
             <motion.div
               animate={{
@@ -176,7 +178,7 @@ export default function ContactForm() {
                 onFocus={() => setFocusedField("email")}
                 onBlur={() => setFocusedField(null)}
                 className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-foreground/40 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
-                placeholder="john@example.com"
+                placeholder={t("emailPlaceholder")}
               />
             </motion.div>
           </div>
@@ -187,7 +189,7 @@ export default function ContactForm() {
             htmlFor="company"
             className="block text-sm font-medium text-foreground mb-2"
           >
-            Company <span className="text-foreground/40">(optional)</span>
+            {t("companyLabel")} <span className="text-foreground/40">{t("companyOptional")}</span>
           </label>
           <input
             type="text"
@@ -195,7 +197,7 @@ export default function ContactForm() {
             onFocus={() => setFocusedField("company")}
             onBlur={() => setFocusedField(null)}
             className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-foreground/40 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition"
-            placeholder="Your company name"
+            placeholder={t("companyPlaceholder")}
           />
         </motion.div>
 
@@ -204,20 +206,20 @@ export default function ContactForm() {
             htmlFor="service"
             className="block text-sm font-medium text-foreground mb-2"
           >
-            What service are you interested in?
+            {t("serviceLabel")}
           </label>
           <select
             id="service"
             required
             className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground focus:border-accent focus:ring-1 focus:ring-accent outline-none transition appearance-none cursor-pointer"
           >
-            <option value="">Select a service</option>
-            <option value="web-design">Web Design</option>
-            <option value="brand-identity">Brand Identity</option>
-            <option value="ui-ux">UI/UX Design</option>
-            <option value="motion-graphics">Motion Graphics</option>
-            <option value="print-design">Print Design</option>
-            <option value="other">Other</option>
+            <option value="">{t("serviceDefault")}</option>
+            <option value="web-design">{t("serviceOptions.webDesign")}</option>
+            <option value="brand-identity">{t("serviceOptions.brandIdentity")}</option>
+            <option value="ui-ux">{t("serviceOptions.uiUx")}</option>
+            <option value="motion-graphics">{t("serviceOptions.motionGraphics")}</option>
+            <option value="print-design">{t("serviceOptions.printDesign")}</option>
+            <option value="other">{t("serviceOptions.other")}</option>
           </select>
         </motion.div>
 
@@ -226,7 +228,7 @@ export default function ContactForm() {
             htmlFor="message"
             className="block text-sm font-medium text-foreground mb-2"
           >
-            Project Details
+            {t("messageLabel")}
           </label>
           <textarea
             id="message"
@@ -235,7 +237,7 @@ export default function ContactForm() {
             onFocus={() => setFocusedField("message")}
             onBlur={() => setFocusedField(null)}
             className="w-full px-4 py-3 bg-card border border-border rounded-xl text-foreground placeholder:text-foreground/40 focus:border-accent focus:ring-1 focus:ring-accent outline-none transition resize-none"
-            placeholder="Tell us about your project, goals, timeline..."
+            placeholder={t("messagePlaceholder")}
           />
         </motion.div>
 
@@ -257,7 +259,7 @@ export default function ContactForm() {
                   exit={{ opacity: 0, y: -20 }}
                 >
                   <Loader2 className="w-5 h-5 animate-spin" />
-                  Sending...
+                  {t("submitting")}
                 </motion.div>
               ) : (
                 <motion.div
@@ -267,7 +269,7 @@ export default function ContactForm() {
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, y: -20 }}
                 >
-                  Send Message
+                  {t("submit")}
                   <Send className="w-5 h-5" />
                 </motion.div>
               )}

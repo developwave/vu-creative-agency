@@ -1,52 +1,65 @@
-"use client"
+"use client";
 
-import { useRef, useState, useEffect } from "react"
-import { CheckCircle2, Award, Users, Zap, Heart } from "lucide-react"
-import { motion, useInView, useScroll, useTransform, useSpring } from "framer-motion"
+import { useRef, useState, useEffect } from "react";
+import { CheckCircle2, Award, Users, Zap, Heart } from "lucide-react";
+import {
+  motion,
+  useInView,
+  useScroll,
+  useTransform,
+  useSpring,
+} from "framer-motion";
+import { useTranslations } from "next-intl";
 
 export default function About() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [countUp, setCountUp] = useState({ projects: 0, clients: 0, years: 0, satisfaction: 0 })
+  const t = useTranslations("homeAbout");
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [countUp, setCountUp] = useState({
+    projects: 0,
+    clients: 0,
+    years: 0,
+    satisfaction: 0,
+  });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const bgCircle1Y = useTransform(scrollYProgress, [0, 1], [0, -200])
-  const bgCircle2Y = useTransform(scrollYProgress, [0, 1], [0, 150])
-  const imageY = useTransform(scrollYProgress, [0, 1], [50, -50])
-  const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 })
+  const bgCircle1Y = useTransform(scrollYProgress, [0, 1], [0, -200]);
+  const bgCircle2Y = useTransform(scrollYProgress, [0, 1], [0, 150]);
+  const imageY = useTransform(scrollYProgress, [0, 1], [50, -50]);
+  const smoothImageY = useSpring(imageY, { stiffness: 100, damping: 30 });
 
   useEffect(() => {
     if (isInView) {
-      const duration = 2000
-      const steps = 60
-      const interval = duration / steps
-      let step = 0
+      const duration = 2000;
+      const steps = 60;
+      const interval = duration / steps;
+      let step = 0;
 
       const timer = setInterval(() => {
-        step++
+        step++;
         setCountUp({
           projects: Math.min(Math.floor((250 * step) / steps), 250),
           clients: Math.min(Math.floor((120 * step) / steps), 120),
           years: Math.min(Math.floor((10 * step) / steps), 10),
           satisfaction: Math.min(Math.floor((98 * step) / steps), 98),
-        })
-        if (step >= steps) clearInterval(timer)
-      }, interval)
+        });
+        if (step >= steps) clearInterval(timer);
+      }, interval);
 
-      return () => clearInterval(timer)
+      return () => clearInterval(timer);
     }
-  }, [isInView])
+  }, [isInView]);
 
   const values = [
-    { icon: Award, title: "Excellence", desc: "We pursue perfection in every pixel" },
-    { icon: Users, title: "Collaboration", desc: "Your vision drives our creativity" },
-    { icon: Zap, title: "Innovation", desc: "Pushing boundaries of design" },
-    { icon: Heart, title: "Passion", desc: "We love what we do" },
-  ]
+    { icon: Award, key: "excellence" },
+    { icon: Users, key: "collaboration" },
+    { icon: Zap, key: "innovation" },
+    { icon: Heart, key: "passion" },
+  ];
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -54,7 +67,7 @@ export default function About() {
       opacity: 1,
       transition: { staggerChildren: 0.1, delayChildren: 0.2 },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -63,7 +76,7 @@ export default function About() {
       y: 0,
       transition: { duration: 0.6, ease: [0.25, 0.4, 0.25, 1] },
     },
-  }
+  };
 
   return (
     <section
@@ -82,12 +95,20 @@ export default function About() {
 
       <motion.div
         animate={{ rotate: 360 }}
-        transition={{ duration: 60, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        transition={{
+          duration: 60,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] border border-accent/5 rounded-full pointer-events-none"
       />
       <motion.div
         animate={{ rotate: -360 }}
-        transition={{ duration: 45, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+        transition={{
+          duration: 45,
+          repeat: Number.POSITIVE_INFINITY,
+          ease: "linear",
+        }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] border border-accent/5 rounded-full pointer-events-none"
       />
 
@@ -99,21 +120,34 @@ export default function About() {
           variants={containerVariants}
           className="text-center mb-20"
         >
-          <motion.p variants={itemVariants} className="text-accent text-sm font-semibold tracking-widest mb-4">
-            WHO WE ARE
+          <motion.p
+            variants={itemVariants}
+            className="text-accent text-sm font-semibold tracking-widest mb-4"
+          >
+            {t("sectionLabel")}
           </motion.p>
-          <motion.h2 variants={itemVariants} className="text-5xl md:text-7xl font-bold text-foreground mb-6">
-            Crafting Digital
+          <motion.h2
+            variants={itemVariants}
+            className="text-5xl md:text-7xl font-bold text-foreground mb-6"
+          >
+            {t("titleLine1")}
             <motion.span
               className="block bg-gradient-to-r from-accent via-primary to-accent bg-clip-text text-transparent bg-[length:200%_auto]"
               animate={{ backgroundPosition: ["0%", "200%"] }}
-              transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+              transition={{
+                duration: 4,
+                repeat: Number.POSITIVE_INFINITY,
+                ease: "linear",
+              }}
             >
-              Experiences
+              {t("titleLine2")}
             </motion.span>
           </motion.h2>
-          <motion.p variants={itemVariants} className="text-xl text-foreground/60 max-w-2xl mx-auto">
-            We're a team of passionate designers and strategists dedicated to bringing your brand's vision to life.
+          <motion.p
+            variants={itemVariants}
+            className="text-xl text-foreground/60 max-w-2xl mx-auto"
+          >
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 
@@ -125,12 +159,25 @@ export default function About() {
           className="grid grid-cols-2 md:grid-cols-4 gap-6 mb-24"
         >
           {[
-            { value: countUp.projects, label: "Projects Completed", suffix: "+" },
-            { value: countUp.clients, label: "Happy Clients", suffix: "+" },
-            { value: countUp.years, label: "Years Experience", suffix: "+" },
-            { value: countUp.satisfaction, label: "Satisfaction Rate", suffix: "%" },
+            {
+              value: countUp.projects,
+              label: t("stats.projects"),
+              suffix: "+",
+            },
+            { value: countUp.clients, label: t("stats.clients"), suffix: "+" },
+            { value: countUp.years, label: t("stats.years"), suffix: "+" },
+            {
+              value: countUp.satisfaction,
+              label: t("stats.satisfaction"),
+              suffix: "%",
+            },
           ].map((stat, i) => (
-            <motion.div key={i} variants={itemVariants} whileHover={{ y: -5, scale: 1.02 }} className="relative group">
+            <motion.div
+              key={i}
+              variants={itemVariants}
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="relative group"
+            >
               <motion.div
                 initial={{ opacity: 0 }}
                 whileHover={{ opacity: 1 }}
@@ -141,12 +188,18 @@ export default function About() {
                   className="text-5xl md:text-6xl font-bold text-accent mb-2"
                   initial={{ scale: 0.5 }}
                   animate={isInView ? { scale: 1 } : {}}
-                  transition={{ delay: i * 0.1, type: "spring", stiffness: 200 }}
+                  transition={{
+                    delay: i * 0.1,
+                    type: "spring",
+                    stiffness: 200,
+                  }}
                 >
                   {stat.value}
                   {stat.suffix}
                 </motion.div>
-                <div className="text-sm text-foreground/60 uppercase tracking-wider">{stat.label}</div>
+                <div className="text-sm text-foreground/60 uppercase tracking-wider">
+                  {stat.label}
+                </div>
               </div>
             </motion.div>
           ))}
@@ -161,7 +214,10 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="relative"
           >
-            <motion.div style={{ y: smoothImageY }} className="relative h-[600px]">
+            <motion.div
+              style={{ y: smoothImageY }}
+              className="relative h-[600px]"
+            >
               {/* Main Image */}
               <motion.div
                 whileHover={{ scale: 1.02, rotateY: 5 }}
@@ -174,7 +230,7 @@ export default function About() {
                   alt="Our workspace"
                   className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/60 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/60 to-transparent" />
               </motion.div>
 
               {/* Secondary Image */}
@@ -194,7 +250,11 @@ export default function About() {
               {/* Floating Badge */}
               <motion.div
                 animate={{ y: [-5, 5, -5] }}
-                transition={{ duration: 3, repeat: Number.POSITIVE_INFINITY, ease: "easeInOut" }}
+                transition={{
+                  duration: 3,
+                  repeat: Number.POSITIVE_INFINITY,
+                  ease: "easeInOut",
+                }}
                 className="absolute top-10 right-10 bg-accent text-background px-6 py-3 rounded-full font-bold shadow-lg shadow-accent/30"
               >
                 Since 2014
@@ -218,26 +278,18 @@ export default function About() {
             transition={{ duration: 0.8, delay: 0.5 }}
           >
             <h3 className="text-4xl md:text-5xl font-bold text-foreground mb-6 leading-tight">
-              We Don't Just Design,
-              <span className="text-accent"> We Solve Problems</span>
+              {t("contentTitle")}
+              <span className="text-accent">{t("contentTitleAccent")}</span>
             </h3>
             <p className="text-lg text-foreground/60 mb-8 leading-relaxed">
-              At VU Creative Agency, we believe great design is more than aesthetics—it's about creating meaningful
-              connections between brands and their audiences. Our multidisciplinary team combines artistic vision with
-              strategic thinking to deliver work that resonates.
+              {t("paragraph1")}
             </p>
             <p className="text-lg text-foreground/60 mb-10 leading-relaxed">
-              From startups to Fortune 500 companies, we've partnered with diverse clients to transform their digital
-              presence and elevate their brand identity.
+              {t("paragraph2")}
             </p>
 
             <ul className="space-y-4 mb-10">
-              {[
-                "Award-winning design team with global recognition",
-                "Custom solutions tailored to your unique brand",
-                "Rapid delivery without compromising quality",
-                "Ongoing support and brand consultation",
-              ].map((item, i) => (
+              {[0, 1, 2, 3].map((i) => (
                 <motion.li
                   key={i}
                   initial={{ opacity: 0, x: -20 }}
@@ -252,7 +304,7 @@ export default function About() {
                   >
                     <CheckCircle2 className="w-4 h-4 text-accent" />
                   </motion.div>
-                  {item}
+                  {t(`bulletPoints.${i}`)}
                 </motion.li>
               ))}
             </ul>
@@ -262,7 +314,7 @@ export default function About() {
               whileTap={{ scale: 0.95 }}
               className="group relative px-8 py-4 bg-accent text-background font-semibold rounded-xl overflow-hidden"
             >
-              <span className="relative z-10">Learn More About Us</span>
+              <span className="relative z-10">{t("learnMore")}</span>
               <motion.div
                 className="absolute inset-0 bg-primary"
                 initial={{ y: "100%" }}
@@ -274,9 +326,16 @@ export default function About() {
         </div>
 
         {/* Values Section - Removed team section, kept only values */}
-        <motion.div initial="hidden" animate={isInView ? "visible" : "hidden"} variants={containerVariants}>
-          <motion.h3 variants={itemVariants} className="text-3xl font-bold text-foreground text-center mb-12">
-            Our Core Values
+        <motion.div
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={containerVariants}
+        >
+          <motion.h3
+            variants={itemVariants}
+            className="text-3xl font-bold text-foreground text-center mb-12"
+          >
+            {t("valuesTitle")}
           </motion.h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {values.map((value, i) => (
@@ -293,13 +352,17 @@ export default function About() {
                 >
                   <value.icon className="w-7 h-7 text-accent" />
                 </motion.div>
-                <h4 className="text-lg font-bold text-foreground mb-2">{value.title}</h4>
-                <p className="text-sm text-foreground/60">{value.desc}</p>
+                <h4 className="text-lg font-bold text-foreground mb-2">
+                  {t(`values.${value.key}.title`)}
+                </h4>
+                <p className="text-sm text-foreground/60">
+                  {t(`values.${value.key}.desc`)}
+                </p>
               </motion.div>
             ))}
           </div>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

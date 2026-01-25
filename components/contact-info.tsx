@@ -3,32 +3,20 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Mail, Phone, MapPin, Clock, Linkedin, Instagram, Twitter, Dribbble } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const contactDetails = [
-  {
-    icon: Mail,
-    label: "Email",
-    value: "hello@vucreative.agency",
-    href: "mailto:hello@vucreative.agency",
-  },
-  {
-    icon: Phone,
-    label: "Phone",
-    value: "+1 (555) 123-4567",
-    href: "tel:+15551234567",
-  },
-  {
-    icon: MapPin,
-    label: "Address",
-    value: "123 Creative Ave, New York, NY 10001",
-    href: "#",
-  },
-  {
-    icon: Clock,
-    label: "Business Hours",
-    value: "Mon - Fri: 9AM - 6PM EST",
-    href: null,
-  },
+const contactIcons = [Mail, Phone, MapPin, Clock]
+const contactHrefs = [
+  "mailto:hello@vucreative.agency",
+  "tel:+15551234567",
+  "#",
+  null,
+]
+const contactValues = [
+  "hello@vucreative.agency",
+  "+1 (555) 123-4567",
+  "123 Creative Ave, New York, NY 10001",
+  null, // Will use translation for hours value
 ]
 
 const socials = [
@@ -39,6 +27,8 @@ const socials = [
 ]
 
 export default function ContactInfo() {
+  const t = useTranslations("contactInfo")
+  const labelKeys = ["email", "phone", "address", "hours"]
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-50px" })
 
@@ -70,15 +60,16 @@ export default function ContactInfo() {
       animate={isInView ? "visible" : "hidden"}
     >
       <motion.h2 className="text-3xl font-bold text-foreground mb-2" variants={itemVariants}>
-        Contact Information
+        {t("title")}
       </motion.h2>
       <motion.p className="text-foreground/60 mb-8" variants={itemVariants}>
-        Prefer to reach out directly? Here's how you can find us.
+        {t("subtitle")}
       </motion.p>
 
       <div className="space-y-6 mb-12">
-        {contactDetails.map((detail, i) => {
-          const Icon = detail.icon
+        {contactIcons.map((Icon, i) => {
+          const href = contactHrefs[i]
+          const value = contactValues[i] || t("hoursValue")
           const content = (
             <motion.div
               key={i}
@@ -94,14 +85,14 @@ export default function ContactInfo() {
                 <Icon className="w-5 h-5 text-accent" />
               </motion.div>
               <div>
-                <div className="text-sm text-foreground/60 mb-1">{detail.label}</div>
-                <div className="text-foreground font-medium group-hover:text-accent transition">{detail.value}</div>
+                <div className="text-sm text-foreground/60 mb-1">{t(labelKeys[i])}</div>
+                <div className="text-foreground font-medium group-hover:text-accent transition">{value}</div>
               </div>
             </motion.div>
           )
 
-          return detail.href ? (
-            <a key={i} href={detail.href} className="block">
+          return href ? (
+            <a key={i} href={href} className="block">
               {content}
             </a>
           ) : (
@@ -111,7 +102,7 @@ export default function ContactInfo() {
       </div>
 
       <motion.div variants={itemVariants}>
-        <h3 className="text-lg font-semibold text-foreground mb-4">Follow Us</h3>
+        <h3 className="text-lg font-semibold text-foreground mb-4">{t("followUs")}</h3>
         <div className="flex gap-4">
           {socials.map((social, i) => {
             const Icon = social.icon
@@ -150,10 +141,10 @@ export default function ContactInfo() {
             animate={{ scale: [1, 1.3, 1] }}
             transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
           />
-          <span className="text-foreground font-semibold">Quick Response</span>
+          <span className="text-foreground font-semibold">{t("quickResponse")}</span>
         </div>
         <p className="text-foreground/60 text-sm">
-          We typically respond within 2-4 hours during business hours. For urgent inquiries, give us a call.
+          {t("quickResponseText")}
         </p>
       </motion.div>
     </motion.div>

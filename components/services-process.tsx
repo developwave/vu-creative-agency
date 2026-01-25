@@ -3,38 +3,12 @@
 import { useRef, useState } from "react"
 import { motion, useInView, useScroll, useTransform } from "framer-motion"
 import { MessageSquare, Search, PenTool, Rocket } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const steps = [
-  {
-    icon: MessageSquare,
-    title: "Discovery",
-    description: "We start by understanding your vision, goals, and target audience through in-depth conversations.",
-    details:
-      "Every great project begins with a conversation. We dive deep into your brand, your challenges, and your aspirations.",
-  },
-  {
-    icon: Search,
-    title: "Research",
-    description: "Comprehensive market analysis and competitor research to inform our creative strategy.",
-    details:
-      "We analyze your industry, study your competitors, and identify opportunities to make your brand stand out.",
-  },
-  {
-    icon: PenTool,
-    title: "Design",
-    description: "Iterative design process with multiple concepts and refinements based on your feedback.",
-    details: "Our designers bring ideas to life through sketches, mockups, and prototypes, refining until perfection.",
-  },
-  {
-    icon: Rocket,
-    title: "Deliver",
-    description: "Final assets delivered with comprehensive guidelines and ongoing support for implementation.",
-    details:
-      "We hand over polished, production-ready assets complete with guidelines to ensure consistent brand application.",
-  },
-]
+const stepIcons = [MessageSquare, Search, PenTool, Rocket]
 
 export default function ServicesProcess() {
+  const t = useTranslations("servicesProcess")
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
   const [activeStep, setActiveStep] = useState(0)
@@ -84,13 +58,13 @@ export default function ServicesProcess() {
             transition={{ delay: 0.2 }}
             className="text-accent text-sm font-semibold tracking-widest mb-4"
           >
-            HOW WE WORK
+            {t("sectionLabel")}
           </motion.p>
           <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">
-            Our Creative <span className="text-accent">Process</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h2>
           <p className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            A proven methodology that delivers exceptional results every time
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -102,13 +76,12 @@ export default function ServicesProcess() {
             <motion.div
               className="absolute left-6 top-0 w-0.5 bg-accent"
               initial={{ height: 0 }}
-              animate={isInView ? { height: `${(activeStep / (steps.length - 1)) * 100}%` } : {}}
+              animate={isInView ? { height: `${(activeStep / (stepIcons.length - 1)) * 100}%` } : {}}
               transition={{ duration: 0.7 }}
             />
 
             <div className="space-y-8">
-              {steps.map((step, index) => {
-                const Icon = step.icon
+              {stepIcons.map((Icon, index) => {
                 const isActive = index === activeStep
                 const isPast = index < activeStep
                 return (
@@ -158,10 +131,10 @@ export default function ServicesProcess() {
                         <h3
                           className={`text-xl font-bold transition-colors ${isActive ? "text-accent" : "text-foreground"}`}
                         >
-                          {step.title}
+                          {t(`steps.${index}.title`)}
                         </h3>
                       </div>
-                      <p className="text-foreground/60 text-sm">{step.description}</p>
+                      <p className="text-foreground/60 text-sm">{t(`steps.${index}.description`)}</p>
                     </motion.div>
                   </motion.div>
                 )
@@ -195,7 +168,7 @@ export default function ServicesProcess() {
                   className="w-20 h-20 bg-gradient-to-br from-accent to-chart-2 rounded-2xl flex items-center justify-center mb-8"
                 >
                   {(() => {
-                    const Icon = steps[activeStep].icon
+                    const Icon = stepIcons[activeStep]
                     return <Icon className="w-10 h-10 text-background" />
                   })()}
                 </motion.div>
@@ -206,7 +179,7 @@ export default function ServicesProcess() {
                   animate={{ opacity: 1, y: 0 }}
                   className="text-accent text-sm font-bold tracking-widest"
                 >
-                  STEP 0{activeStep + 1}
+                  {t("stepLabel")} 0{activeStep + 1}
                 </motion.span>
                 <motion.h3
                   key={`title-${activeStep}`}
@@ -215,7 +188,7 @@ export default function ServicesProcess() {
                   transition={{ delay: 0.1 }}
                   className="text-3xl md:text-4xl font-bold text-foreground mt-2 mb-6"
                 >
-                  {steps[activeStep].title}
+                  {t(`steps.${activeStep}.title`)}
                 </motion.h3>
                 <motion.p
                   key={`details-${activeStep}`}
@@ -224,12 +197,12 @@ export default function ServicesProcess() {
                   transition={{ delay: 0.2 }}
                   className="text-foreground/70 text-lg leading-relaxed mb-8"
                 >
-                  {steps[activeStep].details}
+                  {t(`steps.${activeStep}.details`)}
                 </motion.p>
 
                 {/* Progress dots */}
                 <div className="flex gap-2">
-                  {steps.map((_, i) => (
+                  {stepIcons.map((_, i) => (
                     <motion.button
                       key={i}
                       onClick={() => setActiveStep(i)}

@@ -1,10 +1,24 @@
-"use client"
+"use client";
 
-import { useState, useRef } from "react"
-import { motion, AnimatePresence, useInView } from "framer-motion"
-import { X, ArrowUpRight, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react"
+import { useState, useRef } from "react";
+import { motion, AnimatePresence, useInView } from "framer-motion";
+import {
+  X,
+  ArrowUpRight,
+  ExternalLink,
+  ChevronLeft,
+  ChevronRight,
+} from "lucide-react";
 
-const categories = ["All", "Web Design", "Branding", "Graphics", "Mobile Apps", "UI/UX", "Photography"]
+const categories = [
+  "All",
+  "Web Design",
+  "Branding",
+  "Graphics",
+  "Mobile Apps",
+  "UI/UX",
+  "Photography",
+];
 
 const projects = [
   {
@@ -12,7 +26,8 @@ const projects = [
     title: "Luxe Fashion E-Commerce",
     category: "Web Design",
     image: "/luxury-fashion-ecommerce-website-dark-theme.jpg",
-    description: "A premium e-commerce platform for high-end fashion brands with immersive shopping experience.",
+    description:
+      "A premium e-commerce platform for high-end fashion brands with immersive shopping experience.",
     year: "2024",
     client: "Luxe Fashion Co.",
     size: "large",
@@ -22,7 +37,8 @@ const projects = [
     title: "TechVault Brand Identity",
     category: "Branding",
     image: "/modern-tech-company-brand-identity-logo-dark.jpg",
-    description: "Complete brand identity system including logo, colors, and guidelines for a tech startup.",
+    description:
+      "Complete brand identity system including logo, colors, and guidelines for a tech startup.",
     year: "2024",
     client: "TechVault Inc.",
     size: "small",
@@ -32,7 +48,8 @@ const projects = [
     title: "Minimalist App Interface",
     category: "Mobile Apps",
     image: "/minimal-mobile-app-interface-dark-mode.jpg",
-    description: "Clean and intuitive mobile app design focused on user experience.",
+    description:
+      "Clean and intuitive mobile app design focused on user experience.",
     year: "2024",
     client: "AppFlow",
     size: "tall",
@@ -62,7 +79,8 @@ const projects = [
     title: "Finance Dashboard UI",
     category: "UI/UX",
     image: "/finance-dashboard-ui-design-dark-theme.jpg",
-    description: "Comprehensive dashboard design for financial analytics platform.",
+    description:
+      "Comprehensive dashboard design for financial analytics platform.",
     year: "2024",
     client: "FinanceFlow",
     size: "large",
@@ -127,27 +145,36 @@ const projects = [
     client: "TechCon 2024",
     size: "tall",
   },
-]
+];
 
 export default function GalleryGrid() {
-  const [activeCategory, setActiveCategory] = useState("All")
-  const [selectedProject, setSelectedProject] = useState<(typeof projects)[0] | null>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const [activeCategory, setActiveCategory] = useState("All");
+  const [selectedProject, setSelectedProject] = useState<
+    (typeof projects)[0] | null
+  >(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
-  const filteredProjects = activeCategory === "All" ? projects : projects.filter((p) => p.category === activeCategory)
+  const filteredProjects =
+    activeCategory === "All"
+      ? projects
+      : projects.filter((p) => p.category === activeCategory);
 
   const navigateProject = (direction: "prev" | "next") => {
-    if (!selectedProject) return
-    const currentIndex = filteredProjects.findIndex((p) => p.id === selectedProject.id)
+    if (!selectedProject) return;
+    const currentIndex = filteredProjects.findIndex(
+      (p) => p.id === selectedProject.id,
+    );
     if (direction === "prev") {
-      const prevIndex = currentIndex === 0 ? filteredProjects.length - 1 : currentIndex - 1
-      setSelectedProject(filteredProjects[prevIndex])
+      const prevIndex =
+        currentIndex === 0 ? filteredProjects.length - 1 : currentIndex - 1;
+      setSelectedProject(filteredProjects[prevIndex]);
     } else {
-      const nextIndex = currentIndex === filteredProjects.length - 1 ? 0 : currentIndex + 1
-      setSelectedProject(filteredProjects[nextIndex])
+      const nextIndex =
+        currentIndex === filteredProjects.length - 1 ? 0 : currentIndex + 1;
+      setSelectedProject(filteredProjects[nextIndex]);
     }
-  }
+  };
 
   return (
     <section ref={sectionRef} className="py-20 px-6">
@@ -177,7 +204,10 @@ export default function GalleryGrid() {
         </motion.div>
 
         {/* Masonry grid with AnimatePresence */}
-        <motion.div layout className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6">
+        <motion.div
+          layout
+          className="columns-1 md:columns-2 lg:columns-3 gap-6 space-y-6"
+        >
           <AnimatePresence mode="popLayout">
             {filteredProjects.map((project, index) => (
               <motion.div
@@ -214,7 +244,7 @@ export default function GalleryGrid() {
                     initial={{ opacity: 0 }}
                     whileHover={{ opacity: 1 }}
                     transition={{ duration: 0.3 }}
-                    className="absolute inset-0 bg-gradient-to-t from-background via-background/60 to-transparent"
+                    className="absolute inset-0 bg-gradient-to-t from-gradient-overlay via-background/60 to-transparent"
                   >
                     <div className="absolute inset-0 flex flex-col justify-end p-6">
                       <motion.div
@@ -225,8 +255,12 @@ export default function GalleryGrid() {
                         <span className="text-accent text-xs font-semibold tracking-wider mb-2 block">
                           {project.category}
                         </span>
-                        <h3 className="text-xl font-bold text-foreground mb-2">{project.title}</h3>
-                        <p className="text-foreground/60 text-sm line-clamp-2">{project.description}</p>
+                        <h3 className="text-xl font-bold text-foreground mb-2">
+                          {project.title}
+                        </h3>
+                        <p className="text-foreground/60 text-sm line-clamp-2">
+                          {project.description}
+                        </p>
                       </motion.div>
                     </div>
                   </motion.div>
@@ -277,8 +311,8 @@ export default function GalleryGrid() {
               exit={{ opacity: 0, x: -20 }}
               transition={{ delay: 0.2 }}
               onClick={(e) => {
-                e.stopPropagation()
-                navigateProject("prev")
+                e.stopPropagation();
+                navigateProject("prev");
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -292,8 +326,8 @@ export default function GalleryGrid() {
               exit={{ opacity: 0, x: 20 }}
               transition={{ delay: 0.2 }}
               onClick={(e) => {
-                e.stopPropagation()
-                navigateProject("next")
+                e.stopPropagation();
+                navigateProject("next");
               }}
               whileHover={{ scale: 1.1 }}
               whileTap={{ scale: 0.9 }}
@@ -345,17 +379,25 @@ export default function GalleryGrid() {
                   <span className="text-accent text-sm font-semibold tracking-wider mb-3">
                     {selectedProject.category}
                   </span>
-                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">{selectedProject.title}</h2>
-                  <p className="text-foreground/60 text-lg mb-8">{selectedProject.description}</p>
+                  <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-4">
+                    {selectedProject.title}
+                  </h2>
+                  <p className="text-foreground/60 text-lg mb-8">
+                    {selectedProject.description}
+                  </p>
 
                   <div className="grid grid-cols-2 gap-6 mb-8">
                     <div>
                       <p className="text-foreground/40 text-sm mb-1">Client</p>
-                      <p className="text-foreground font-medium">{selectedProject.client}</p>
+                      <p className="text-foreground font-medium">
+                        {selectedProject.client}
+                      </p>
                     </div>
                     <div>
                       <p className="text-foreground/40 text-sm mb-1">Year</p>
-                      <p className="text-foreground font-medium">{selectedProject.year}</p>
+                      <p className="text-foreground font-medium">
+                        {selectedProject.year}
+                      </p>
                     </div>
                   </div>
 
@@ -374,5 +416,5 @@ export default function GalleryGrid() {
         )}
       </AnimatePresence>
     </section>
-  )
+  );
 }

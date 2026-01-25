@@ -3,47 +3,12 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
 import { Rocket, Award, Globe, Zap, Star, Users } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const milestones = [
-  {
-    year: "2014",
-    title: "The Beginning",
-    description: "Founded in a small NYC apartment with big dreams and three passionate designers.",
-    icon: Rocket,
-  },
-  {
-    year: "2016",
-    title: "First Major Client",
-    description: "Landed our first Fortune 500 client, marking a turning point in our journey.",
-    icon: Star,
-  },
-  {
-    year: "2018",
-    title: "Global Expansion",
-    description: "Opened offices in London and Tokyo, expanding our reach across continents.",
-    icon: Globe,
-  },
-  {
-    year: "2020",
-    title: "Award Recognition",
-    description: "Won our first Webby Award and multiple design industry accolades.",
-    icon: Award,
-  },
-  {
-    year: "2022",
-    title: "Team Growth",
-    description: "Expanded to 15+ team members with diverse backgrounds and expertise.",
-    icon: Users,
-  },
-  {
-    year: "2024",
-    title: "Innovation Lab",
-    description: "Launched our AI-powered design innovation lab for next-gen experiences.",
-    icon: Zap,
-  },
-]
+const milestoneIcons = [Rocket, Star, Globe, Award, Users, Zap]
 
 export default function AboutTimeline() {
+  const t = useTranslations("aboutTimeline")
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
@@ -67,10 +32,10 @@ export default function AboutTimeline() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Our <span className="text-accent">Journey</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h2>
           <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-            A decade of creativity, growth, and countless projects that shaped who we are today.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -83,8 +48,7 @@ export default function AboutTimeline() {
           </div>
 
           <div className="space-y-16">
-            {milestones.map((milestone, i) => {
-              const Icon = milestone.icon
+            {milestoneIcons.map((Icon, i) => {
               const isEven = i % 2 === 0
 
               return (
@@ -114,10 +78,10 @@ export default function AboutTimeline() {
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 + i * 0.1 }}
                       >
-                        {milestone.year}
+                        {t(`milestones.${i}.year`)}
                       </motion.div>
-                      <h3 className="text-2xl font-bold text-foreground mb-3">{milestone.title}</h3>
-                      <p className="text-foreground/60">{milestone.description}</p>
+                      <h3 className="text-2xl font-bold text-foreground mb-3">{t(`milestones.${i}.title`)}</h3>
+                      <p className="text-foreground/60">{t(`milestones.${i}.description`)}</p>
                     </motion.div>
                   </div>
 

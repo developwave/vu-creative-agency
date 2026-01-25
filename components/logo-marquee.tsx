@@ -2,9 +2,11 @@
 
 import { useRef } from "react"
 import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useTranslations } from "next-intl"
 
 export default function LogoMarquee() {
-  const brands = ["ADOBE", "FIGMA", "SKETCH", "CANVA", "DRIBBBLE", "BEHANCE", "WEBFLOW", "FRAMER"]
+  const t = useTranslations("logoMarquee")
+  const brands = t.raw("brands") as string[]
   const sectionRef = useRef<HTMLDivElement>(null)
   const isInView = useInView(sectionRef, { once: true })
 

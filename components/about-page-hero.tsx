@@ -3,8 +3,10 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { Sparkles } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function AboutPageHero() {
+  const t = useTranslations("aboutHero")
   const containerRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -113,17 +115,17 @@ export default function AboutPageHero() {
             >
               <Sparkles className="w-4 h-4 text-accent" />
             </motion.div>
-            <span className="text-accent text-sm font-medium">Our Story</span>
+            <span className="text-accent text-sm font-medium">{t("badge")}</span>
           </motion.div>
 
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
-            <span className="text-foreground">We Are </span>
+            <span className="text-foreground">{t("titleLine1")} </span>
             <motion.span
               className="bg-gradient-to-r from-accent via-chart-2 to-accent bg-[length:200%_auto] bg-clip-text text-transparent inline-block"
               animate={{ backgroundPosition: ["0% center", "200% center"] }}
               transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             >
-              Creators
+              {t("titleLine2")}
             </motion.span>
           </motion.h1>
 
@@ -131,17 +133,11 @@ export default function AboutPageHero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-foreground/60 max-w-3xl mx-auto mb-12 leading-relaxed"
           >
-            A passionate team of designers, developers, and dreamers dedicated to transforming ideas into extraordinary
-            digital experiences.
+            {t("subtitle")}
           </motion.p>
 
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-16">
-            {[
-              { value: "10+", label: "Years Experience" },
-              { value: "250+", label: "Projects Delivered" },
-              { value: "120+", label: "Happy Clients" },
-              { value: "15+", label: "Awards Won" },
-            ].map((stat, i) => (
+            {[0, 1, 2, 3].map((i) => (
               <motion.div
                 key={i}
                 custom={i}
@@ -157,9 +153,9 @@ export default function AboutPageHero() {
                   animate={{ opacity: 1 }}
                   transition={{ delay: 0.8 + i * 0.1 }}
                 >
-                  {stat.value}
+                  {t(`stats.${i}.value`)}
                 </motion.div>
-                <div className="text-foreground/60 text-sm">{stat.label}</div>
+                <div className="text-foreground/60 text-sm">{t(`stats.${i}.label`)}</div>
               </motion.div>
             ))}
           </div>

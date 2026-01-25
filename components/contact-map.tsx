@@ -2,8 +2,10 @@
 
 import { useEffect, useRef, useState } from "react"
 import { MapPin, ExternalLink } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function ContactMap() {
+  const t = useTranslations("contactMap")
   const [isVisible, setIsVisible] = useState(false)
   const sectionRef = useRef<HTMLElement>(null)
 
@@ -46,11 +48,11 @@ export default function ContactMap() {
 
             {/* Location Card */}
             <div className="absolute bottom-6 left-6 right-6 md:right-auto md:max-w-sm bg-background/90 backdrop-blur-sm border border-border rounded-2xl p-6">
-              <h3 className="text-lg font-bold text-foreground mb-2">VU Creative Agency HQ</h3>
+              <h3 className="text-lg font-bold text-foreground mb-2">{t("title")}</h3>
               <p className="text-foreground/60 text-sm mb-4">
-                123 Creative Avenue, Suite 500
+                {t("addressLine1")}
                 <br />
-                New York, NY 10001, USA
+                {t("addressLine2")}
               </p>
               <a
                 href="https://maps.google.com"
@@ -58,7 +60,7 @@ export default function ContactMap() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-accent hover:text-accent/80 font-medium text-sm transition"
               >
-                Open in Google Maps
+                {t("openMaps")}
                 <ExternalLink className="w-4 h-4" />
               </a>
             </div>

@@ -1,0 +1,441 @@
+{
+  "metadata": {
+    "home": {
+      "title": "VU Creative Agency - Web & Graphic Design",
+      "description": "Stunning web design and graphic design solutions that elevate your brand. We create modern, impactful digital experiences."
+    },
+    "about": {
+      "title": "About Us | VU Creative Agency",
+      "description": "Learn about VU Creative Agency - our story, team, values, and creative journey."
+    },
+    "services": {
+      "title": "Services | VU Creative Agency",
+      "description": "Explore our creative services - graphic design, web design, branding, UI/UX and more."
+    },
+    "gallery": {
+      "title": "Gallery | VU Creative Agency",
+      "description": "Explore our portfolio of web designs, brand identities, graphics, and creative projects."
+    },
+    "contact": {
+      "title": "Contact Us | VU Creative Agency",
+      "description": "Get in touch with VU Creative Agency. Let's discuss your next project."
+    }
+  },
+  "header": {
+    "gallery": "Gallery",
+    "services": "Services",
+    "about": "About",
+    "contact": "Contact",
+    "cta": "Get in Touch"
+  },
+  "hero": {
+    "badge": "MEET VU CREATIVE",
+    "titleLine1": "Design That",
+    "titleLine2": "Moves You",
+    "description": "We craft stunning digital experiences through web design and graphics that tell your story, captivate your audience, and drive results.",
+    "ctaPrimary": "View Our Work",
+    "ctaSecondary": "Watch Showreel",
+    "scroll": "SCROLL",
+    "yearsLabel": "10+ Years",
+    "yearsDescription": "Crafting digital excellence",
+    "imageAlt": "VU Creative Agency workspace"
+  },
+  "footer": {
+    "brandName": "VU Creative",
+    "tagline": "Crafting digital experiences that inspire and convert.",
+    "work": "Work",
+    "portfolio": "Portfolio",
+    "caseStudies": "Case Studies",
+    "testimonials": "Testimonials",
+    "company": "Company",
+    "about": "About",
+    "team": "Team",
+    "services": "Services",
+    "contact": "Contact",
+    "connect": "Connect",
+    "copyright": "© 2025 VU Creative Agency. All rights reserved.",
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service"
+  },
+  "cta": {
+    "titleLine1": "Ready to Transform",
+    "titleLine2": "Your Brand?",
+    "description": "Let's collaborate and create something extraordinary. Get in touch with our team today to discuss your project.",
+    "primary": "Start Your Project",
+    "secondary": "Schedule a Call",
+    "trustedBy": "TRUSTED BY LEADING BRANDS"
+  },
+  "homeAbout": {
+    "sectionLabel": "WHO WE ARE",
+    "titleLine1": "Crafting Digital",
+    "titleLine2": "Experiences",
+    "subtitle": "We're a team of passionate designers and strategists dedicated to bringing your brand's vision to life.",
+    "stats": {
+      "projects": "Projects Completed",
+      "clients": "Happy Clients",
+      "years": "Years Experience",
+      "satisfaction": "Satisfaction Rate"
+    },
+    "contentTitle": "We Don't Just Design,",
+    "contentTitleAccent": " We Solve Problems",
+    "paragraph1": "At VU Creative Agency, we believe great design is more than aesthetics—it's about creating meaningful connections between brands and their audiences. Our multidisciplinary team combines artistic vision with strategic thinking to deliver work that resonates.",
+    "paragraph2": "From startups to Fortune 500 companies, we've partnered with diverse clients to transform their digital presence and elevate their brand identity.",
+    "bulletPoints": [
+      "Award-winning design team with global recognition",
+      "Custom solutions tailored to your unique brand",
+      "Rapid delivery without compromising quality",
+      "Ongoing support and brand consultation"
+    ],
+    "learnMore": "Learn More About Us",
+    "valuesTitle": "Our Core Values",
+    "values": {
+      "excellence": { "title": "Excellence", "desc": "We pursue perfection in every pixel" },
+      "collaboration": { "title": "Collaboration", "desc": "Your vision drives our creativity" },
+      "innovation": { "title": "Innovation", "desc": "Pushing boundaries of design" },
+      "passion": { "title": "Passion", "desc": "We love what we do" }
+    }
+  },
+  "homeServices": {
+    "sectionLabel": "WHAT WE DO",
+    "title": "Our Services",
+    "servicesCount": "8 Services",
+    "items": [
+      { "name": "Web Design", "description": "Beautiful, responsive websites" },
+      { "name": "Branding", "description": "Identity that stands out" },
+      { "name": "UI/UX", "description": "Intuitive user experiences" },
+      { "name": "Graphics", "description": "Stunning visual content" },
+      { "name": "Photography", "description": "Professional imagery" },
+      { "name": "Illustration", "description": "Custom artwork & icons" },
+      { "name": "Motion", "description": "Engaging animations" },
+      { "name": "Marketing", "description": "Campaigns that convert" }
+    ]
+  },
+  "works": {
+    "sectionLabel": "OUR PORTFOLIO",
+    "title": "Our",
+    "titleAccent": "Latest Works",
+    "subtitle": "A showcase of our most compelling projects that blend creativity with strategy",
+    "viewAll": "View All Projects",
+    "projects": [
+      { "title": "E-Commerce Revolution", "category": "Web Design & Branding" },
+      { "title": "Digital Marketing Suite", "category": "UI/UX Design" },
+      { "title": "Brand Identity System", "category": "Graphic Design" },
+      { "title": "Interactive Portfolio", "category": "Web Development" },
+      { "title": "Mobile App Design", "category": "Mobile UI Design" },
+      { "title": "Visual Campaign", "category": "Graphic Design" }
+    ]
+  },
+  "logoMarquee": {
+    "brands": ["ADOBE", "FIGMA", "SKETCH", "CANVA", "DRIBBBLE", "BEHANCE", "WEBFLOW", "FRAMER"]
+  },
+  "videoBanner": {
+    "sectionLabel": "SEE US IN ACTION",
+    "titleLine1": "Where Creativity",
+    "titleLine2": "Comes to Life",
+    "subtitle": "Take a glimpse into our creative process and see how we transform ideas into stunning visual experiences.",
+    "showreelLabel": "Agency Showreel",
+    "showreelTitle": "2024 Creative Highlights",
+    "stat1Value": "50+",
+    "stat1Label": "Videos Produced",
+    "stat2Value": "1M+",
+    "stat2Label": "Views Generated",
+    "features": [
+      { "label": "Motion Graphics", "desc": "Stunning animations" },
+      { "label": "Brand Films", "desc": "Compelling stories" },
+      { "label": "Product Videos", "desc": "Showcase excellence" },
+      { "label": "Social Content", "desc": "Viral-worthy clips" }
+    ]
+  },
+  "aboutHero": {
+    "badge": "Our Story",
+    "titleLine1": "We Are ",
+    "titleLine2": "Creators",
+    "subtitle": "A passionate team of designers, developers, and dreamers dedicated to transforming ideas into extraordinary digital experiences.",
+    "stats": [
+      { "value": "10+", "label": "Years Experience" },
+      { "value": "250+", "label": "Projects Delivered" },
+      { "value": "120+", "label": "Happy Clients" },
+      { "value": "15+", "label": "Awards Won" }
+    ]
+  },
+  "aboutStory": {
+    "titleLine1": "The Story Behind",
+    "titleLine2": " VU Creative",
+    "paragraphs": [
+      "VU Creative Agency was born from a simple belief: great design has the power to transform businesses and connect people in meaningful ways.",
+      "What started as a small studio with just three passionate designers has evolved into a full-service creative powerhouse, working with brands across the globe to bring their visions to life.",
+      "Our journey has been defined by curiosity, collaboration, and an unwavering commitment to excellence. We don't just create designs—we craft experiences that resonate, inspire, and drive results."
+    ],
+    "founded": "2014",
+    "foundedLabel": "Founded in NYC",
+    "teamCount": "15+ Team Members",
+    "teamSpread": "Across 4 continents"
+  },
+  "aboutTimeline": {
+    "title": "Our",
+    "titleAccent": "Journey",
+    "subtitle": "A decade of creativity, growth, and countless projects that shaped who we are today.",
+    "milestones": [
+      { "year": "2014", "title": "The Beginning", "description": "Founded in a small NYC apartment with big dreams and three passionate designers." },
+      { "year": "2016", "title": "First Major Client", "description": "Landed our first Fortune 500 client, marking a turning point in our journey." },
+      { "year": "2018", "title": "Global Expansion", "description": "Opened offices in London and Tokyo, expanding our reach across continents." },
+      { "year": "2020", "title": "Award Recognition", "description": "Won our first Webby Award and multiple design industry accolades." },
+      { "year": "2022", "title": "Team Growth", "description": "Expanded to 15+ team members with diverse backgrounds and expertise." },
+      { "year": "2024", "title": "Innovation Lab", "description": "Launched our AI-powered design innovation lab for next-gen experiences." }
+    ]
+  },
+  "aboutTeam": {
+    "title": "Meet the",
+    "titleAccent": "Team",
+    "subtitle": "The creative minds behind VU Creative Agency. We're a diverse group united by our love for great design.",
+    "members": [
+      { "name": "Marcus Chen", "role": "Creative Director", "bio": "15+ years leading creative teams for global brands." },
+      { "name": "Sarah Williams", "role": "Lead Designer", "bio": "Award-winning visual designer with a passion for typography." },
+      { "name": "David Park", "role": "Motion Designer", "bio": "Bringing brands to life through dynamic animations." },
+      { "name": "Emma Rodriguez", "role": "Brand Strategist", "bio": "Crafting brand stories that resonate and convert." }
+    ]
+  },
+  "aboutValues": {
+    "title": "Our Core",
+    "titleAccent": "Values",
+    "subtitle": "The principles that guide every decision we make and every project we undertake.",
+    "items": [
+      { "title": "Passion", "description": "We pour our hearts into every project, treating each one as our own." },
+      { "title": "Innovation", "description": "Constantly pushing boundaries and exploring new creative territories." },
+      { "title": "Precision", "description": "Meticulous attention to detail in every pixel and interaction." },
+      { "title": "Collaboration", "description": "Working together with clients as true creative partners." },
+      { "title": "Creativity", "description": "Fearless exploration of ideas that challenge the status quo." },
+      { "title": "Excellence", "description": "Never settling for good when great is within reach." }
+    ]
+  },
+  "aboutCta": {
+    "titleLine1": "Ready to Create",
+    "titleLine2": "Something Amazing?",
+    "subtitle": "Let's bring your vision to life. Get in touch and let's start building something extraordinary together.",
+    "primary": "Start a Project",
+    "secondary": "View Our Work"
+  },
+  "servicesHero": {
+    "badge": "What We Do",
+    "titleLine1": "Creative ",
+    "titleLine2": "Services",
+    "subtitle": "From stunning visuals to seamless digital experiences, we offer comprehensive creative solutions that make your brand unforgettable.",
+    "pills": ["Graphic Design", "Web Design", "Branding", "UI/UX", "Motion", "Photography"]
+  },
+  "servicesGrid": {
+    "sectionLabel": "COMPREHENSIVE SOLUTIONS",
+    "title": "Everything Your Brand",
+    "titleAccent": "Needs",
+    "subtitle": "Full-spectrum creative services to take your brand from concept to reality",
+    "learnMore": "Learn More",
+    "showLess": "Show Less",
+    "items": [
+      {
+        "title": "Graphic Design",
+        "description": "Eye-catching visuals that tell your brand story. From logos to marketing materials, we create designs that leave lasting impressions.",
+        "features": ["Logo Design", "Print Materials", "Illustrations", "Packaging"]
+      },
+      {
+        "title": "Web Design & Development",
+        "description": "Beautiful, responsive websites that convert visitors into customers. We blend aesthetics with functionality for stunning digital experiences.",
+        "features": ["Custom Websites", "E-commerce", "Web Applications", "CMS Development"]
+      },
+      {
+        "title": "UI/UX Design",
+        "description": "Intuitive interfaces designed for engagement. We create seamless user experiences that delight and retain your audience.",
+        "features": ["User Research", "Wireframing", "Prototyping", "Usability Testing"]
+      },
+      {
+        "title": "Brand Identity",
+        "description": "Comprehensive brand strategies that elevate your identity. We build memorable brands that resonate with your target market.",
+        "features": ["Brand Strategy", "Visual Identity", "Brand Guidelines", "Rebranding"]
+      },
+      {
+        "title": "Motion Graphics",
+        "description": "Dynamic animations that bring your message to life. From explainer videos to social content, we create motion that captivates.",
+        "features": ["Animation", "Video Editing", "Social Content", "Explainer Videos"]
+      },
+      {
+        "title": "Photography",
+        "description": "Professional photography that showcases your brand. We capture stunning visuals for products, events, and marketing campaigns.",
+        "features": ["Product Photos", "Event Coverage", "Lifestyle Shots", "Photo Editing"]
+      },
+      {
+        "title": "Illustration",
+        "description": "Custom illustrations that add character to your brand. From icons to full artwork, we bring creativity to every stroke.",
+        "features": ["Custom Icons", "Character Design", "Digital Art", "Infographics"]
+      },
+      {
+        "title": "Social Media Design",
+        "description": "Scroll-stopping social content that drives engagement. We create cohesive visual strategies for all your social platforms.",
+        "features": ["Post Templates", "Story Design", "Ad Creatives", "Content Strategy"]
+      }
+    ]
+  },
+  "servicesProcess": {
+    "sectionLabel": "HOW WE WORK",
+    "title": "Our Creative",
+    "titleAccent": "Process",
+    "subtitle": "A proven methodology that delivers exceptional results every time",
+    "stepLabel": "STEP",
+    "steps": [
+      {
+        "title": "Discovery",
+        "description": "We start by understanding your vision, goals, and target audience through in-depth conversations.",
+        "details": "Every great project begins with a conversation. We dive deep into your brand, your challenges, and your aspirations."
+      },
+      {
+        "title": "Research",
+        "description": "Comprehensive market analysis and competitor research to inform our creative strategy.",
+        "details": "We analyze your industry, study your competitors, and identify opportunities to make your brand stand out."
+      },
+      {
+        "title": "Design",
+        "description": "Iterative design process with multiple concepts and refinements based on your feedback.",
+        "details": "Our designers bring ideas to life through sketches, mockups, and prototypes, refining until perfection."
+      },
+      {
+        "title": "Deliver",
+        "description": "Final assets delivered with comprehensive guidelines and ongoing support for implementation.",
+        "details": "We hand over polished, production-ready assets complete with guidelines to ensure consistent brand application."
+      }
+    ]
+  },
+  "servicesFaq": {
+    "sectionLabel": "FAQ",
+    "title": "Common",
+    "titleAccent": "Questions",
+    "subtitle": "Everything you need to know about working with us",
+    "items": [
+      {
+        "question": "How long does a typical project take?",
+        "answer": "Project timelines vary based on scope and complexity. A logo design typically takes 2-3 weeks, while a complete brand identity can take 6-8 weeks. Website projects range from 4-12 weeks depending on features and pages."
+      },
+      {
+        "question": "What's included in the revision process?",
+        "answer": "Each package includes a set number of revision rounds. During each round, you can provide consolidated feedback that we'll implement. Additional revisions beyond the included rounds are available at an hourly rate."
+      },
+      {
+        "question": "Do you offer ongoing support after project completion?",
+        "answer": "Yes! We offer maintenance packages and retainer agreements for ongoing design needs. We also provide 30 days of free support after project delivery to address any immediate concerns."
+      },
+      {
+        "question": "Can I upgrade my package mid-project?",
+        "answer": "Absolutely. If your needs evolve during the project, we can discuss upgrading your package or adding specific services. We'll provide a revised quote based on the additional requirements."
+      },
+      {
+        "question": "What file formats will I receive?",
+        "answer": "You'll receive all source files in industry-standard formats including AI, PSD, PDF, PNG, JPG, and SVG. For web projects, you'll get the complete codebase and access to all assets."
+      },
+      {
+        "question": "How do payments work?",
+        "answer": "We typically require 50% upfront to begin work, with the remaining 50% due upon project completion. For larger projects, we can arrange milestone-based payments."
+      }
+    ]
+  },
+  "servicesCta": {
+    "badge": "Ready to Start?",
+    "title": "Let's Create Something Amazing Together",
+    "subtitle": "Have a project in mind? We'd love to hear about it. Schedule a free consultation to discuss your vision.",
+    "primary": "Start Your Project",
+    "secondary": "Learn About Us"
+  },
+  "galleryHero": {
+    "sectionLabel": "OUR PORTFOLIO",
+    "titleLine1": "Creative",
+    "titleLine2": "Gallery",
+    "subtitle": "Explore our collection of award-winning designs, brand identities, websites, and creative projects that showcase our passion for visual excellence.",
+    "stats": ["250+ Projects", "120+ Clients", "15+ Awards", "10+ Years"]
+  },
+  "galleryGrid": {
+    "categories": ["All", "Web Design", "Branding", "Graphics", "Mobile Apps", "UI/UX", "Photography"],
+    "viewLive": "View Live Project",
+    "client": "Client",
+    "year": "Year",
+    "projects": [
+      { "title": "Luxe Fashion E-Commerce", "description": "A premium e-commerce platform for high-end fashion brands with immersive shopping experience.", "client": "Luxe Fashion Co." },
+      { "title": "TechVault Brand Identity", "description": "Complete brand identity system including logo, colors, and guidelines for a tech startup.", "client": "TechVault Inc." },
+      { "title": "Minimalist App Interface", "description": "Clean and intuitive mobile app design focused on user experience.", "client": "AppFlow" },
+      { "title": "Creative Campaign Visuals", "description": "Eye-catching visual campaign materials for a product launch.", "client": "Nova Marketing" },
+      { "title": "Restaurant Website Redesign", "description": "Modern website redesign for an upscale dining establishment.", "client": "The Golden Fork" },
+      { "title": "Finance Dashboard UI", "description": "Comprehensive dashboard design for financial analytics platform.", "client": "FinanceFlow" },
+      { "title": "Startup Brand Package", "description": "Full branding package for an innovative tech startup.", "client": "Innovate Labs" },
+      { "title": "Product Photography", "description": "Professional product photography for luxury goods.", "client": "Premium Goods" },
+      { "title": "Social Media Kit", "description": "Comprehensive social media design templates and assets.", "client": "Social Spark" },
+      { "title": "Fitness App Design", "description": "Health and fitness tracking app with gamification elements.", "client": "FitLife" },
+      { "title": "Architecture Portfolio", "description": "Elegant portfolio website for an architecture firm.", "client": "Modern Arch" },
+      { "title": "Event Branding", "description": "Complete event branding for a tech conference.", "client": "TechCon 2024" }
+    ]
+  },
+  "galleryStats": {
+    "sectionLabel": "BY THE NUMBERS",
+    "title": "Our",
+    "titleAccent": "Impact",
+    "stats": [
+      { "label": "Projects Completed" },
+      { "label": "Happy Clients" },
+      { "label": "Design Awards" },
+      { "label": "Countries Reached" }
+    ]
+  },
+  "galleryCta": {
+    "badge": "Ready to create something amazing?",
+    "titleLine1": "Let's Build Your",
+    "titleLine2": "Next Project",
+    "subtitle": "Inspired by what you've seen? We'd love to bring your vision to life with the same creativity and attention to detail.",
+    "primary": "Start Your Project",
+    "secondary": "View Our Services"
+  },
+  "contactHero": {
+    "badge": "Let's Talk",
+    "titleLine1": "Get in ",
+    "titleLine2": "Touch",
+    "subtitle": "Have a project in mind? We'd love to hear about it. Drop us a line and let's create something amazing together."
+  },
+  "contactForm": {
+    "title": "Send us a message",
+    "subtitle": "Fill out the form below and we'll get back to you as soon as possible.",
+    "nameLabel": "Name",
+    "namePlaceholder": "John Doe",
+    "emailLabel": "Email",
+    "emailPlaceholder": "john@example.com",
+    "companyLabel": "Company",
+    "companyOptional": "(optional)",
+    "companyPlaceholder": "Your company name",
+    "serviceLabel": "What service are you interested in?",
+    "serviceDefault": "Select a service",
+    "serviceOptions": {
+      "webDesign": "Web Design",
+      "brandIdentity": "Brand Identity",
+      "uiUx": "UI/UX Design",
+      "motionGraphics": "Motion Graphics",
+      "printDesign": "Print Design",
+      "other": "Other"
+    },
+    "messageLabel": "Project Details",
+    "messagePlaceholder": "Tell us about your project, goals, timeline...",
+    "submit": "Send Message",
+    "submitting": "Sending...",
+    "successTitle": "Message Sent!",
+    "successMessage": "Thanks for reaching out. We'll get back to you within 24 hours.",
+    "sendAnother": "Send another message"
+  },
+  "contactInfo": {
+    "title": "Contact Information",
+    "subtitle": "Prefer to reach out directly? Here's how you can find us.",
+    "email": "Email",
+    "phone": "Phone",
+    "address": "Address",
+    "hours": "Business Hours",
+    "hoursValue": "Mon - Fri: 9AM - 6PM EST",
+    "followUs": "Follow Us",
+    "quickResponse": "Quick Response",
+    "quickResponseText": "We typically respond within 2-4 hours during business hours. For urgent inquiries, give us a call."
+  },
+  "contactMap": {
+    "title": "VU Creative Agency HQ",
+    "addressLine1": "123 Creative Avenue, Suite 500",
+    "addressLine2": "New York, NY 10001, USA",
+    "openMaps": "Open in Google Maps"
+  }
+}

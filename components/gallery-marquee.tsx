@@ -1,29 +1,32 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useRef, useState } from "react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
 
 const galleryImages = [
   { src: "/luxury-brand-packaging-design-mockup.jpg", alt: "Brand packaging" },
   { src: "/modern-website-design-on-laptop-mockup.jpg", alt: "Website design" },
-  { src: "/creative-poster-design-colorful-typography.jpg", alt: "Poster design" },
+  {
+    src: "/creative-poster-design-colorful-typography.jpg",
+    alt: "Poster design",
+  },
   { src: "/mobile-app-ui-design-dark-theme.jpg", alt: "App design" },
   { src: "/corporate-business-card-design-elegant.jpg", alt: "Business cards" },
   { src: "/social-media-post-design-creative.jpg", alt: "Social media" },
-]
+];
 
 export default function GalleryMarquee() {
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const row1X = useTransform(scrollYProgress, [0, 1], [0, -100])
-  const row2X = useTransform(scrollYProgress, [0, 1], [0, 100])
+  const row1X = useTransform(scrollYProgress, [0, 1], [0, -100]);
+  const row2X = useTransform(scrollYProgress, [0, 1], [0, 100]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -31,7 +34,7 @@ export default function GalleryMarquee() {
       opacity: 1,
       transition: { staggerChildren: 0.1 },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -40,7 +43,7 @@ export default function GalleryMarquee() {
       y: 0,
       transition: { duration: 0.6 },
     },
-  }
+  };
 
   return (
     <section ref={sectionRef} className="py-24 overflow-hidden">
@@ -50,15 +53,24 @@ export default function GalleryMarquee() {
         variants={containerVariants}
         className="text-center mb-16 px-6"
       >
-        <motion.h2 variants={itemVariants} className="text-4xl md:text-5xl font-bold text-foreground mb-4">
+        <motion.h2
+          variants={itemVariants}
+          className="text-4xl md:text-5xl font-bold text-foreground mb-4"
+        >
           Design <span className="text-accent">Gallery</span>
         </motion.h2>
-        <motion.p variants={itemVariants} className="text-foreground/60 max-w-xl mx-auto">
+        <motion.p
+          variants={itemVariants}
+          className="text-foreground/60 max-w-xl mx-auto"
+        >
           A glimpse into our creative universe
         </motion.p>
       </motion.div>
 
-      <motion.div style={{ x: row1X }} className="flex animate-marquee-slow mb-8">
+      <motion.div
+        style={{ x: row1X }}
+        className="flex animate-marquee-slow mb-8"
+      >
         {[...galleryImages, ...galleryImages].map((img, index) => (
           <motion.div
             key={`row1-${index}`}
@@ -81,7 +93,7 @@ export default function GalleryMarquee() {
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
-                className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex items-end p-4"
+                className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/80 via-transparent to-transparent flex items-end p-4"
               >
                 <motion.span
                   initial={{ y: 10, opacity: 0 }}
@@ -125,7 +137,7 @@ export default function GalleryMarquee() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === index + 100 ? 1 : 0 }}
-                  className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent flex items-end p-4"
+                  className="absolute inset-0 bg-gradient-to-t from-gradient-overlay/80 via-transparent to-transparent flex items-end p-4"
                 >
                   <motion.span
                     initial={{ y: 10, opacity: 0 }}
@@ -143,5 +155,5 @@ export default function GalleryMarquee() {
           ))}
       </motion.div>
     </section>
-  )
+  );
 }

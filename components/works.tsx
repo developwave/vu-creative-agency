@@ -1,53 +1,31 @@
-"use client"
+"use client";
 
-import { useRef, useState } from "react"
-import { ArrowUpRight } from "lucide-react"
-import { motion, useScroll, useTransform, useInView } from "framer-motion"
+import { useRef, useState } from "react";
+import { ArrowUpRight } from "lucide-react";
+import { motion, useScroll, useTransform, useInView } from "framer-motion";
+import { useTranslations } from "next-intl";
 
-const projects = [
-  {
-    title: "E-Commerce Revolution",
-    category: "Web Design & Branding",
-    image: "/modern-ecommerce-website-design-dark-theme.jpg",
-  },
-  {
-    title: "Digital Marketing Suite",
-    category: "UI/UX Design",
-    image: "/digital-marketing-dashboard-app-interface.jpg",
-  },
-  {
-    title: "Brand Identity System",
-    category: "Graphic Design",
-    image: "/brand-identity-design-system-logo-mockup.jpg",
-  },
-  {
-    title: "Interactive Portfolio",
-    category: "Web Development",
-    image: "/interactive-portfolio-website-modern-design.jpg",
-  },
-  {
-    title: "Mobile App Design",
-    category: "Mobile UI Design",
-    image: "/modern-mobile-app-interface-dark-mode.jpg",
-  },
-  {
-    title: "Visual Campaign",
-    category: "Graphic Design",
-    image: "/creative-visual-campaign-poster-design.jpg",
-  },
-]
+const projectImages = [
+  "/modern-ecommerce-website-design-dark-theme.jpg",
+  "/digital-marketing-dashboard-app-interface.jpg",
+  "/brand-identity-design-system-logo-mockup.jpg",
+  "/interactive-portfolio-website-modern-design.jpg",
+  "/modern-mobile-app-interface-dark-mode.jpg",
+  "/creative-visual-campaign-poster-design.jpg",
+];
 
 export default function Works() {
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null)
-  const sectionRef = useRef<HTMLDivElement>(null)
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
+  const t = useTranslations("works");
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   const { scrollYProgress } = useScroll({
     target: sectionRef,
     offset: ["start end", "end start"],
-  })
+  });
 
-  const bgY = useTransform(scrollYProgress, [0, 1], [0, -100])
+  const bgY = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -58,7 +36,7 @@ export default function Works() {
         delayChildren: 0.2,
       },
     },
-  }
+  };
 
   const itemVariants = {
     hidden: { opacity: 0, y: 60, scale: 0.95 },
@@ -71,7 +49,7 @@ export default function Works() {
         ease: [0.25, 0.4, 0.25, 1],
       },
     },
-  }
+  };
 
   const titleVariants = {
     hidden: { opacity: 0, y: 30 },
@@ -83,7 +61,7 @@ export default function Works() {
         ease: "easeOut",
       },
     },
-  }
+  };
 
   return (
     <section
@@ -91,15 +69,26 @@ export default function Works() {
       ref={sectionRef}
       className="py-32 px-6 bg-gradient-to-b from-transparent to-primary/5 relative overflow-hidden"
     >
-      <motion.div style={{ y: bgY }} className="absolute inset-0 pointer-events-none">
+      <motion.div
+        style={{ y: bgY }}
+        className="absolute inset-0 pointer-events-none"
+      >
         <motion.div
           animate={{ rotate: 360 }}
-          transition={{ duration: 50, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 50,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
           className="absolute top-20 right-20 w-64 h-64 border border-accent/5 rounded-full"
         />
         <motion.div
           animate={{ rotate: -360 }}
-          transition={{ duration: 40, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
+          transition={{
+            duration: 40,
+            repeat: Number.POSITIVE_INFINITY,
+            ease: "linear",
+          }}
           className="absolute bottom-40 left-10 w-96 h-96 border border-primary/5 rounded-full"
         />
       </motion.div>
@@ -111,14 +100,23 @@ export default function Works() {
           variants={containerVariants}
           className="text-center mb-20"
         >
-          <motion.p variants={titleVariants} className="text-accent text-sm font-semibold tracking-widest mb-4">
-            OUR PORTFOLIO
+          <motion.p
+            variants={titleVariants}
+            className="text-accent text-sm font-semibold tracking-widest mb-4"
+          >
+            {t("sectionLabel")}
           </motion.p>
-          <motion.h2 variants={titleVariants} className="text-5xl md:text-6xl font-bold text-foreground mb-6">
-            Our <span className="text-accent">Latest Works</span>
+          <motion.h2
+            variants={titleVariants}
+            className="text-5xl md:text-6xl font-bold text-foreground mb-6"
+          >
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </motion.h2>
-          <motion.p variants={titleVariants} className="text-lg text-foreground/60 max-w-2xl mx-auto">
-            A showcase of our most compelling projects that blend creativity with strategy
+          <motion.p
+            variants={titleVariants}
+            className="text-lg text-foreground/60 max-w-2xl mx-auto"
+          >
+            {t("subtitle")}
           </motion.p>
         </motion.div>
 
@@ -128,7 +126,7 @@ export default function Works() {
           variants={containerVariants}
           className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
         >
-          {projects.map((project, index) => (
+          {projectImages.map((image, index) => (
             <motion.div
               key={index}
               variants={itemVariants}
@@ -143,8 +141,8 @@ export default function Works() {
                 transition={{ duration: 0.3 }}
               >
                 <motion.img
-                  src={project.image || "/placeholder.svg"}
-                  alt={project.title}
+                  src={image || "/placeholder.svg"}
+                  alt={t(`projects.${index}.title`)}
                   className="w-full h-full object-cover"
                   animate={{
                     scale: hoveredIndex === index ? 1.15 : 1,
@@ -156,7 +154,7 @@ export default function Works() {
                   initial={{ opacity: 0 }}
                   animate={{ opacity: hoveredIndex === index ? 1 : 0 }}
                   transition={{ duration: 0.3 }}
-                  className="absolute inset-0 bg-gradient-to-t from-background via-background/50 to-transparent flex flex-col justify-end p-6"
+                  className="absolute inset-0 bg-gradient-to-t from-gradient-overlay via-background/50 to-transparent flex flex-col justify-end p-6"
                 >
                   <motion.div
                     initial={{ y: 20, opacity: 0 }}
@@ -167,12 +165,19 @@ export default function Works() {
                     transition={{ duration: 0.3, delay: 0.1 }}
                   >
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="text-xl font-bold text-foreground">{project.title}</h3>
-                      <motion.div animate={{ rotate: hoveredIndex === index ? 45 : 0 }} transition={{ duration: 0.3 }}>
+                      <h3 className="text-xl font-bold text-foreground">
+                        {t(`projects.${index}.title`)}
+                      </h3>
+                      <motion.div
+                        animate={{ rotate: hoveredIndex === index ? 45 : 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
                         <ArrowUpRight className="w-5 h-5 text-accent" />
                       </motion.div>
                     </div>
-                    <p className="text-accent text-sm font-semibold">{project.category}</p>
+                    <p className="text-accent text-sm font-semibold">
+                      {t(`projects.${index}.category`)}
+                    </p>
                   </motion.div>
                 </motion.div>
 
@@ -206,15 +211,19 @@ export default function Works() {
           className="text-center mt-16"
         >
           <motion.button
-            whileHover={{ scale: 1.05, backgroundColor: "rgba(212, 0, 255, 1)", color: "#0a0a0f" }}
+            whileHover={{
+              scale: 1.05,
+              backgroundColor: "rgba(212, 0, 255, 1)",
+              color: "#0a0a0f",
+            }}
             whileTap={{ scale: 0.95 }}
             className="px-8 py-4 border border-accent text-accent font-semibold rounded-xl transition-colors duration-300 group"
           >
-            View All Projects
+            {t("viewAll")}
             <ArrowUpRight className="inline-block ml-2 w-5 h-5" />
           </motion.button>
         </motion.div>
       </div>
     </section>
-  )
+  );
 }

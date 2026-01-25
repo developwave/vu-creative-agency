@@ -3,8 +3,10 @@
 import { useRef } from "react"
 import { motion, useScroll, useTransform } from "framer-motion"
 import { MessageCircle } from "lucide-react"
+import { useTranslations } from "next-intl"
 
 export default function ContactHero() {
+  const t = useTranslations("contactHero")
   const containerRef = useRef<HTMLElement>(null)
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -87,17 +89,17 @@ export default function ContactHero() {
             <motion.div animate={{ scale: [1, 1.2, 1] }} transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}>
               <MessageCircle className="w-4 h-4 text-accent" />
             </motion.div>
-            <span className="text-accent text-sm font-medium">Let's Talk</span>
+            <span className="text-accent text-sm font-medium">{t("badge")}</span>
           </motion.div>
 
           <motion.h1 variants={itemVariants} className="text-5xl md:text-7xl font-bold mb-8 leading-tight">
-            <span className="text-foreground">Get in </span>
+            <span className="text-foreground">{t("titleLine1")}</span>
             <motion.span
               className="bg-gradient-to-r from-accent via-chart-2 to-accent bg-[length:200%_auto] bg-clip-text text-transparent inline-block"
               animate={{ backgroundPosition: ["0% center", "200% center"] }}
               transition={{ duration: 4, repeat: Number.POSITIVE_INFINITY, ease: "linear" }}
             >
-              Touch
+              {t("titleLine2")}
             </motion.span>
           </motion.h1>
 
@@ -105,8 +107,7 @@ export default function ContactHero() {
             variants={itemVariants}
             className="text-xl md:text-2xl text-foreground/60 max-w-2xl mx-auto leading-relaxed"
           >
-            Have a project in mind? We'd love to hear about it. Drop us a line and let's create something amazing
-            together.
+            {t("subtitle")}
           </motion.p>
         </motion.div>
       </motion.div>

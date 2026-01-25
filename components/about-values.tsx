@@ -3,47 +3,20 @@
 import { useRef } from "react"
 import { motion, useInView } from "framer-motion"
 import { Heart, Lightbulb, Target, Handshake, Palette, Sparkles } from "lucide-react"
+import { useTranslations } from "next-intl"
 
-const values = [
-  {
-    icon: Heart,
-    title: "Passion",
-    description: "We pour our hearts into every project, treating each one as our own.",
-    color: "from-pink-500 to-rose-500",
-  },
-  {
-    icon: Lightbulb,
-    title: "Innovation",
-    description: "Constantly pushing boundaries and exploring new creative territories.",
-    color: "from-amber-500 to-orange-500",
-  },
-  {
-    icon: Target,
-    title: "Precision",
-    description: "Meticulous attention to detail in every pixel and interaction.",
-    color: "from-blue-500 to-cyan-500",
-  },
-  {
-    icon: Handshake,
-    title: "Collaboration",
-    description: "Working together with clients as true creative partners.",
-    color: "from-green-500 to-emerald-500",
-  },
-  {
-    icon: Palette,
-    title: "Creativity",
-    description: "Fearless exploration of ideas that challenge the status quo.",
-    color: "from-purple-500 to-violet-500",
-  },
-  {
-    icon: Sparkles,
-    title: "Excellence",
-    description: "Never settling for good when great is within reach.",
-    color: "from-accent to-chart-2",
-  },
+const valueIcons = [Heart, Lightbulb, Target, Handshake, Palette, Sparkles]
+const valueColors = [
+  "from-pink-500 to-rose-500",
+  "from-amber-500 to-orange-500",
+  "from-blue-500 to-cyan-500",
+  "from-green-500 to-emerald-500",
+  "from-purple-500 to-violet-500",
+  "from-accent to-chart-2",
 ]
 
 export default function AboutValues() {
+  const t = useTranslations("aboutValues")
   const sectionRef = useRef<HTMLElement>(null)
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" })
 
@@ -81,10 +54,10 @@ export default function AboutValues() {
           transition={{ duration: 0.8 }}
         >
           <h2 className="text-4xl md:text-5xl font-bold text-foreground mb-6">
-            Our Core <span className="text-accent">Values</span>
+            {t("title")} <span className="text-accent">{t("titleAccent")}</span>
           </h2>
           <p className="text-foreground/60 text-lg max-w-2xl mx-auto">
-            The principles that guide every decision we make and every project we undertake.
+            {t("subtitle")}
           </p>
         </motion.div>
 
@@ -94,8 +67,8 @@ export default function AboutValues() {
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
         >
-          {values.map((value, i) => {
-            const Icon = value.icon
+          {valueIcons.map((Icon, i) => {
+            const color = valueColors[i]
             return (
               <motion.div
                 key={i}
@@ -107,7 +80,7 @@ export default function AboutValues() {
                 className="group relative bg-card border border-border rounded-2xl p-8 hover:border-accent/50 transition-colors duration-300 cursor-default"
               >
                 <motion.div
-                  className={`absolute inset-0 bg-gradient-to-br ${value.color} rounded-2xl`}
+                  className={`absolute inset-0 bg-gradient-to-br ${color} rounded-2xl`}
                   initial={{ opacity: 0 }}
                   whileHover={{ opacity: 0.05 }}
                   transition={{ duration: 0.3 }}
@@ -115,7 +88,7 @@ export default function AboutValues() {
 
                 <div className="relative z-10">
                   <motion.div
-                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${value.color} flex items-center justify-center mb-6`}
+                    className={`w-14 h-14 rounded-xl bg-gradient-to-br ${color} flex items-center justify-center mb-6`}
                     whileHover={{ scale: 1.15, rotate: 5 }}
                     transition={{ type: "spring", stiffness: 300 }}
                   >
@@ -123,9 +96,9 @@ export default function AboutValues() {
                   </motion.div>
 
                   <h3 className="text-xl font-bold text-foreground mb-3 group-hover:text-accent transition-colors">
-                    {value.title}
+                    {t(`items.${i}.title`)}
                   </h3>
-                  <p className="text-foreground/60 leading-relaxed">{value.description}</p>
+                  <p className="text-foreground/60 leading-relaxed">{t(`items.${i}.description`)}</p>
                 </div>
 
                 <motion.div
