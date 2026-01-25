@@ -95,21 +95,16 @@ export default function ServicesProcess() {
                   >
                     {/* Step circle */}
                     <motion.div
-                      animate={{
-                        scale: isActive ? 1.1 : 1,
-                        backgroundColor: isActive
-                          ? "hsl(var(--accent))"
-                          : isPast
-                            ? "hsl(var(--accent) / 0.2)"
-                            : "hsl(var(--card))",
-                      }}
+                      animate={{ scale: isActive ? 1.1 : 1 }}
                       whileHover={{ scale: 1.15 }}
-                      className={`absolute left-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border ${
-                        isActive || isPast ? "border-accent" : "border-border"
-                      }`}
+                      style={{
+                        backgroundColor: isActive || isPast ? "var(--accent)" : "var(--card)",
+                        borderColor: isActive || isPast ? "var(--accent)" : "var(--border)",
+                      }}
+                      className="absolute left-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border"
                     >
                       <Icon
-                        className={`w-5 h-5 ${isActive ? "text-background" : isPast ? "text-accent" : "text-foreground/40"}`}
+                        className={`w-5 h-5 transition-colors duration-300 ${isActive || isPast ? "text-white" : "text-foreground/40"}`}
                       />
                     </motion.div>
 
