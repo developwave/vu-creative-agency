@@ -71,12 +71,13 @@ export default function ServicesProcess() {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Steps Timeline */}
           <div className="relative">
-            {/* Vertical line */}
-            <div className="absolute left-6 top-0 bottom-0 w-0.5 bg-border" />
+            {/* Vertical line - connects circle centers */}
+            <div className="absolute left-6 top-[50px] bottom-[50px] w-0.5 bg-border" />
             <motion.div
-              className="absolute left-6 top-0 w-0.5 bg-accent"
-              initial={{ height: 0 }}
-              animate={isInView ? { height: `${(activeStep / (stepIcons.length - 1)) * 100}%` } : {}}
+              className="absolute left-6 w-0.5 bg-accent origin-top"
+              style={{ top: '50px', height: 'calc(100% - 100px)' }}
+              initial={{ scaleY: 0 }}
+              animate={isInView ? { scaleY: activeStep / (stepIcons.length - 1) } : {}}
               transition={{ duration: 0.7 }}
             />
 
@@ -93,7 +94,7 @@ export default function ServicesProcess() {
                     className="relative pl-16 cursor-pointer"
                     onClick={() => setActiveStep(index)}
                   >
-                    {/* Step circle */}
+                    {/* Step circle - centered vertically */}
                     <motion.div
                       animate={{ scale: isActive ? 1.1 : 1 }}
                       whileHover={{ scale: 1.15 }}
@@ -101,7 +102,7 @@ export default function ServicesProcess() {
                         backgroundColor: isActive || isPast ? "var(--accent)" : "var(--card)",
                         borderColor: isActive || isPast ? "var(--accent)" : "var(--border)",
                       }}
-                      className="absolute left-0 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border"
+                      className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 rounded-full flex items-center justify-center transition-all duration-300 border"
                     >
                       <Icon
                         className={`w-5 h-5 transition-colors duration-300 ${isActive || isPast ? "text-white" : "text-foreground/40"}`}
