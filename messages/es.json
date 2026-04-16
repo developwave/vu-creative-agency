@@ -89,9 +89,18 @@
     "learnMore": "Conoce Más Sobre Nosotros",
     "valuesTitle": "Nuestros Valores",
     "values": {
-      "excellence": { "title": "Excelencia", "desc": "Buscamos la perfección en cada píxel" },
-      "collaboration": { "title": "Colaboración", "desc": "Tu visión impulsa nuestra creatividad" },
-      "innovation": { "title": "Innovación", "desc": "Empujando los límites del diseño" },
+      "excellence": {
+        "title": "Excelencia",
+        "desc": "Buscamos la perfección en cada píxel"
+      },
+      "collaboration": {
+        "title": "Colaboración",
+        "desc": "Tu visión impulsa nuestra creatividad"
+      },
+      "innovation": {
+        "title": "Innovación",
+        "desc": "Empujando los límites del diseño"
+      },
       "passion": { "title": "Pasión", "desc": "Amamos lo que hacemos" }
     }
   },
@@ -100,7 +109,10 @@
     "title": "Nuestros Servicios",
     "servicesCount": "8 Servicios",
     "items": [
-      { "name": "Diseño Web", "description": "Sitios web hermosos y responsivos" },
+      {
+        "name": "Diseño Web",
+        "description": "Sitios web hermosos y responsivos"
+      },
       { "name": "Branding", "description": "Identidad que destaca" },
       { "name": "UI/UX", "description": "Experiencias de usuario intuitivas" },
       { "name": "Gráficos", "description": "Contenido visual impactante" },
@@ -111,22 +123,46 @@
     ]
   },
   "works": {
-    "sectionLabel": "NUESTRO PORTAFOLIO",
-    "title": "Nuestros",
-    "titleAccent": "Últimos Trabajos",
-    "subtitle": "Una muestra de nuestros proyectos más convincentes que combinan creatividad con estrategia",
-    "viewAll": "Ver Todos los Proyectos",
-    "projects": [
-      { "title": "Revolución E-Commerce", "category": "Diseño Web y Branding" },
-      { "title": "Suite de Marketing Digital", "category": "Diseño UI/UX" },
-      { "title": "Sistema de Identidad de Marca", "category": "Diseño Gráfico" },
-      { "title": "Portafolio Interactivo", "category": "Desarrollo Web" },
-      { "title": "Diseño de App Móvil", "category": "Diseño UI Móvil" },
-      { "title": "Campaña Visual", "category": "Diseño Gráfico" }
+    "title": "Soluciones Creativas",
+    "subtitle": "Construimos marcas con claridad, estrategia e intención.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Marca y Posicionamiento",
+        "description": "Define lo que representas y cómo te presentas."
+      },
+      {
+        "number": "02",
+        "title": "Contenido y Narrativa",
+        "description": "Convierte ideas en historias con las que las personas conectan."
+      },
+      {
+        "number": "03",
+        "title": "Creatividad y Producción",
+        "description": "Da vida a tu marca a través de visuales y ejecución."
+      },
+      {
+        "number": "04",
+        "title": "Crecimiento Digital y Campañas",
+        "description": "Escala tu marca con estrategia, contenido y rendimiento."
+      }
     ]
   },
   "logoMarquee": {
-    "brands": ["ADOBE", "FIGMA", "SKETCH", "CANVA", "DRIBBBLE", "BEHANCE", "WEBFLOW", "FRAMER"]
+    "brands": [
+      "MARCA",
+      "ESTRATEGIA",
+      "CONTENIDO",
+      "MARKETING",
+      "DISEÑO",
+      "VIDEO",
+      "REDES",
+      "CAMPAÑAS",
+      "CRECIMIENTO",
+      "CREATIVIDAD",
+      "DIGITAL",
+      "NARRATIVA"
+    ]
   },
   "videoBanner": {
     "sectionLabel": "VÉANOS EN ACCIÓN",
@@ -176,12 +212,36 @@
     "titleAccent": "Recorrido",
     "subtitle": "Una década de creatividad, crecimiento e innumerables proyectos que nos formaron.",
     "milestones": [
-      { "year": "2014", "title": "El Comienzo", "description": "Fundada en un pequeño apartamento de NYC con grandes sueños y tres diseñadores apasionados." },
-      { "year": "2016", "title": "Primer Gran Cliente", "description": "Conseguimos nuestro primer cliente Fortune 500, marcando un punto de inflexión en nuestro camino." },
-      { "year": "2018", "title": "Expansión Global", "description": "Abrimos oficinas en Londres y Tokio, expandiendo nuestro alcance a través de continentes." },
-      { "year": "2020", "title": "Reconocimiento", "description": "Ganamos nuestro primer Webby Award y múltiples reconocimientos de la industria del diseño." },
-      { "year": "2022", "title": "Crecimiento del Equipo", "description": "Expandimos a más de 15 miembros del equipo con diversos orígenes y experiencia." },
-      { "year": "2024", "title": "Laboratorio de Innovación", "description": "Lanzamos nuestro laboratorio de innovación en diseño con IA para experiencias de próxima generación." }
+      {
+        "year": "2014",
+        "title": "El Comienzo",
+        "description": "Fundada en un pequeño apartamento de NYC con grandes sueños y tres diseñadores apasionados."
+      },
+      {
+        "year": "2016",
+        "title": "Primer Gran Cliente",
+        "description": "Conseguimos nuestro primer cliente Fortune 500, marcando un punto de inflexión en nuestro camino."
+      },
+      {
+        "year": "2018",
+        "title": "Expansión Global",
+        "description": "Abrimos oficinas en Londres y Tokio, expandiendo nuestro alcance a través de continentes."
+      },
+      {
+        "year": "2020",
+        "title": "Reconocimiento",
+        "description": "Ganamos nuestro primer Webby Award y múltiples reconocimientos de la industria del diseño."
+      },
+      {
+        "year": "2022",
+        "title": "Crecimiento del Equipo",
+        "description": "Expandimos a más de 15 miembros del equipo con diversos orígenes y experiencia."
+      },
+      {
+        "year": "2024",
+        "title": "Laboratorio de Innovación",
+        "description": "Lanzamos nuestro laboratorio de innovación en diseño con IA para experiencias de próxima generación."
+      }
     ]
   },
   "aboutTeam": {
@@ -189,10 +249,26 @@
     "titleAccent": "Equipo",
     "subtitle": "Las mentes creativas detrás de VU Creative Agency. Somos un grupo diverso unido por nuestro amor por el gran diseño.",
     "members": [
-      { "name": "Marcus Chen", "role": "Director Creativo", "bio": "Más de 15 años liderando equipos creativos para marcas globales." },
-      { "name": "Sarah Williams", "role": "Diseñadora Principal", "bio": "Diseñadora visual galardonada con pasión por la tipografía." },
-      { "name": "David Park", "role": "Diseñador de Motion", "bio": "Dando vida a las marcas a través de animaciones dinámicas." },
-      { "name": "Emma Rodriguez", "role": "Estratega de Marca", "bio": "Creando historias de marca que resuenan y convierten." }
+      {
+        "name": "Marcus Chen",
+        "role": "Director Creativo",
+        "bio": "Más de 15 años liderando equipos creativos para marcas globales."
+      },
+      {
+        "name": "Sarah Williams",
+        "role": "Diseñadora Principal",
+        "bio": "Diseñadora visual galardonada con pasión por la tipografía."
+      },
+      {
+        "name": "David Park",
+        "role": "Diseñador de Motion",
+        "bio": "Dando vida a las marcas a través de animaciones dinámicas."
+      },
+      {
+        "name": "Emma Rodriguez",
+        "role": "Estratega de Marca",
+        "bio": "Creando historias de marca que resuenan y convierten."
+      }
     ]
   },
   "aboutValues": {
@@ -200,12 +276,30 @@
     "titleAccent": "Valores",
     "subtitle": "Los principios que guían cada decisión que tomamos y cada proyecto que emprendemos.",
     "items": [
-      { "title": "Pasión", "description": "Ponemos el corazón en cada proyecto, tratando cada uno como propio." },
-      { "title": "Innovación", "description": "Constantemente empujando límites y explorando nuevos territorios creativos." },
-      { "title": "Precisión", "description": "Atención meticulosa al detalle en cada píxel e interacción." },
-      { "title": "Colaboración", "description": "Trabajando junto a los clientes como verdaderos socios creativos." },
-      { "title": "Creatividad", "description": "Exploración valiente de ideas que desafían el status quo." },
-      { "title": "Excelencia", "description": "Nunca conformarnos con lo bueno cuando lo grandioso está al alcance." }
+      {
+        "title": "Pasión",
+        "description": "Ponemos el corazón en cada proyecto, tratando cada uno como propio."
+      },
+      {
+        "title": "Innovación",
+        "description": "Constantemente empujando límites y explorando nuevos territorios creativos."
+      },
+      {
+        "title": "Precisión",
+        "description": "Atención meticulosa al detalle en cada píxel e interacción."
+      },
+      {
+        "title": "Colaboración",
+        "description": "Trabajando junto a los clientes como verdaderos socios creativos."
+      },
+      {
+        "title": "Creatividad",
+        "description": "Exploración valiente de ideas que desafían el status quo."
+      },
+      {
+        "title": "Excelencia",
+        "description": "Nunca conformarnos con lo bueno cuando lo grandioso está al alcance."
+      }
     ]
   },
   "aboutCta": {
@@ -220,7 +314,14 @@
     "titleLine1": "Servicios ",
     "titleLine2": "Creativos",
     "subtitle": "Desde visuales impactantes hasta experiencias digitales fluidas, ofrecemos soluciones creativas integrales que hacen tu marca inolvidable.",
-    "pills": ["Diseño Gráfico", "Diseño Web", "Branding", "UI/UX", "Motion", "Fotografía"]
+    "pills": [
+      "Diseño Gráfico",
+      "Diseño Web",
+      "Branding",
+      "UI/UX",
+      "Motion",
+      "Fotografía"
+    ]
   },
   "servicesGrid": {
     "sectionLabel": "SOLUCIONES INTEGRALES",
@@ -233,42 +334,82 @@
       {
         "title": "Diseño Gráfico",
         "description": "Visuales llamativos que cuentan la historia de tu marca. Desde logos hasta materiales de marketing, creamos diseños que dejan impresiones duraderas.",
-        "features": ["Diseño de Logo", "Material Impreso", "Ilustraciones", "Packaging"]
+        "features": [
+          "Diseño de Logo",
+          "Material Impreso",
+          "Ilustraciones",
+          "Packaging"
+        ]
       },
       {
         "title": "Diseño y Desarrollo Web",
         "description": "Sitios web hermosos y responsivos que convierten visitantes en clientes. Combinamos estética con funcionalidad para experiencias digitales impactantes.",
-        "features": ["Sitios Personalizados", "E-commerce", "Aplicaciones Web", "Desarrollo CMS"]
+        "features": [
+          "Sitios Personalizados",
+          "E-commerce",
+          "Aplicaciones Web",
+          "Desarrollo CMS"
+        ]
       },
       {
         "title": "Diseño UI/UX",
         "description": "Interfaces intuitivas diseñadas para el engagement. Creamos experiencias de usuario fluidas que deleitan y retienen a tu audiencia.",
-        "features": ["Investigación de Usuarios", "Wireframing", "Prototipado", "Pruebas de Usabilidad"]
+        "features": [
+          "Investigación de Usuarios",
+          "Wireframing",
+          "Prototipado",
+          "Pruebas de Usabilidad"
+        ]
       },
       {
         "title": "Identidad de Marca",
         "description": "Estrategias de marca integrales que elevan tu identidad. Construimos marcas memorables que resuenan con tu mercado objetivo.",
-        "features": ["Estrategia de Marca", "Identidad Visual", "Guías de Marca", "Rebranding"]
+        "features": [
+          "Estrategia de Marca",
+          "Identidad Visual",
+          "Guías de Marca",
+          "Rebranding"
+        ]
       },
       {
         "title": "Motion Graphics",
         "description": "Animaciones dinámicas que dan vida a tu mensaje. Desde videos explicativos hasta contenido social, creamos movimiento que cautiva.",
-        "features": ["Animación", "Edición de Video", "Contenido Social", "Videos Explicativos"]
+        "features": [
+          "Animación",
+          "Edición de Video",
+          "Contenido Social",
+          "Videos Explicativos"
+        ]
       },
       {
         "title": "Fotografía",
         "description": "Fotografía profesional que muestra tu marca. Capturamos visuales impactantes para productos, eventos y campañas de marketing.",
-        "features": ["Fotos de Producto", "Cobertura de Eventos", "Fotos Lifestyle", "Edición de Fotos"]
+        "features": [
+          "Fotos de Producto",
+          "Cobertura de Eventos",
+          "Fotos Lifestyle",
+          "Edición de Fotos"
+        ]
       },
       {
         "title": "Ilustración",
         "description": "Ilustraciones personalizadas que añaden carácter a tu marca. Desde iconos hasta obras completas, llevamos creatividad a cada trazo.",
-        "features": ["Iconos Personalizados", "Diseño de Personajes", "Arte Digital", "Infografías"]
+        "features": [
+          "Iconos Personalizados",
+          "Diseño de Personajes",
+          "Arte Digital",
+          "Infografías"
+        ]
       },
       {
         "title": "Diseño para Redes Sociales",
         "description": "Contenido social que detiene el scroll y genera engagement. Creamos estrategias visuales cohesivas para todas tus plataformas sociales.",
-        "features": ["Plantillas de Posts", "Diseño de Stories", "Creativos de Ads", "Estrategia de Contenido"]
+        "features": [
+          "Plantillas de Posts",
+          "Diseño de Stories",
+          "Creativos de Ads",
+          "Estrategia de Contenido"
+        ]
       }
     ]
   },
@@ -348,23 +489,79 @@
     "stats": ["250+ Proyectos", "120+ Clientes", "15+ Premios", "10+ Años"]
   },
   "galleryGrid": {
-    "categories": ["Todos", "Diseño Web", "Branding", "Gráficos", "Apps Móviles", "UI/UX", "Fotografía"],
+    "categories": [
+      "Todos",
+      "Diseño Web",
+      "Branding",
+      "Gráficos",
+      "Apps Móviles",
+      "UI/UX",
+      "Fotografía"
+    ],
     "viewLive": "Ver Proyecto en Vivo",
     "client": "Cliente",
     "year": "Año",
     "projects": [
-      { "title": "E-Commerce de Moda de Lujo", "description": "Una plataforma e-commerce premium para marcas de moda de alta gama con experiencia de compra inmersiva.", "client": "Luxe Fashion Co." },
-      { "title": "Identidad de Marca TechVault", "description": "Sistema completo de identidad de marca incluyendo logo, colores y guías para una startup tecnológica.", "client": "TechVault Inc." },
-      { "title": "Interfaz de App Minimalista", "description": "Diseño de app móvil limpio e intuitivo enfocado en la experiencia de usuario.", "client": "AppFlow" },
-      { "title": "Visuales de Campaña Creativa", "description": "Materiales visuales llamativos para el lanzamiento de un producto.", "client": "Nova Marketing" },
-      { "title": "Rediseño de Sitio Web de Restaurante", "description": "Rediseño moderno de sitio web para un establecimiento gastronómico de alta gama.", "client": "The Golden Fork" },
-      { "title": "UI de Dashboard Financiero", "description": "Diseño integral de dashboard para plataforma de analítica financiera.", "client": "FinanceFlow" },
-      { "title": "Paquete de Marca para Startup", "description": "Paquete completo de branding para una startup tecnológica innovadora.", "client": "Innovate Labs" },
-      { "title": "Fotografía de Producto", "description": "Fotografía profesional de producto para bienes de lujo.", "client": "Premium Goods" },
-      { "title": "Kit de Redes Sociales", "description": "Plantillas y activos de diseño integrales para redes sociales.", "client": "Social Spark" },
-      { "title": "Diseño de App de Fitness", "description": "App de seguimiento de salud y fitness con elementos de gamificación.", "client": "FitLife" },
-      { "title": "Portafolio de Arquitectura", "description": "Sitio web de portafolio elegante para una firma de arquitectura.", "client": "Modern Arch" },
-      { "title": "Branding de Evento", "description": "Branding completo para una conferencia de tecnología.", "client": "TechCon 2024" }
+      {
+        "title": "E-Commerce de Moda de Lujo",
+        "description": "Una plataforma e-commerce premium para marcas de moda de alta gama con experiencia de compra inmersiva.",
+        "client": "Luxe Fashion Co."
+      },
+      {
+        "title": "Identidad de Marca TechVault",
+        "description": "Sistema completo de identidad de marca incluyendo logo, colores y guías para una startup tecnológica.",
+        "client": "TechVault Inc."
+      },
+      {
+        "title": "Interfaz de App Minimalista",
+        "description": "Diseño de app móvil limpio e intuitivo enfocado en la experiencia de usuario.",
+        "client": "AppFlow"
+      },
+      {
+        "title": "Visuales de Campaña Creativa",
+        "description": "Materiales visuales llamativos para el lanzamiento de un producto.",
+        "client": "Nova Marketing"
+      },
+      {
+        "title": "Rediseño de Sitio Web de Restaurante",
+        "description": "Rediseño moderno de sitio web para un establecimiento gastronómico de alta gama.",
+        "client": "The Golden Fork"
+      },
+      {
+        "title": "UI de Dashboard Financiero",
+        "description": "Diseño integral de dashboard para plataforma de analítica financiera.",
+        "client": "FinanceFlow"
+      },
+      {
+        "title": "Paquete de Marca para Startup",
+        "description": "Paquete completo de branding para una startup tecnológica innovadora.",
+        "client": "Innovate Labs"
+      },
+      {
+        "title": "Fotografía de Producto",
+        "description": "Fotografía profesional de producto para bienes de lujo.",
+        "client": "Premium Goods"
+      },
+      {
+        "title": "Kit de Redes Sociales",
+        "description": "Plantillas y activos de diseño integrales para redes sociales.",
+        "client": "Social Spark"
+      },
+      {
+        "title": "Diseño de App de Fitness",
+        "description": "App de seguimiento de salud y fitness con elementos de gamificación.",
+        "client": "FitLife"
+      },
+      {
+        "title": "Portafolio de Arquitectura",
+        "description": "Sitio web de portafolio elegante para una firma de arquitectura.",
+        "client": "Modern Arch"
+      },
+      {
+        "title": "Branding de Evento",
+        "description": "Branding completo para una conferencia de tecnología.",
+        "client": "TechCon 2024"
+      }
     ]
   },
   "galleryStats": {

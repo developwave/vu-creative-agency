@@ -1,55 +1,62 @@
-"use client"
+"use client";
 
-import { useEffect, useState } from "react"
-import { Link, usePathname } from "@/i18n/navigation"
-import { useRouter as useNextRouter } from "next/navigation"
-import { useTranslations, useLocale } from "next-intl"
-import { Menu, X, Globe } from "lucide-react"
-import { ThemeToggle } from "@/components/theme-toggle"
-import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react";
+import { Link, usePathname } from "@/i18n/navigation";
+import { useRouter as useNextRouter } from "next/navigation";
+import { useTranslations, useLocale } from "next-intl";
+import { Menu, X, Globe } from "lucide-react";
+import { ThemeToggle } from "@/components/theme-toggle";
+import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export default function Header() {
-  const [isScrolled, setIsScrolled] = useState(false)
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
-  const pathname = usePathname()
-  const nextRouter = useNextRouter()
-  const locale = useLocale()
-  const t = useTranslations("header")
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const nextRouter = useNextRouter();
+  const locale = useLocale();
+  const t = useTranslations("header");
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setIsScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const switchLocale = (newLocale: string) => {
     // pathname from usePathname() already excludes the locale prefix
     // so we just need to add the new locale prefix
-    const newPath = `/${newLocale}${pathname === "/" ? "" : pathname}`
-    nextRouter.push(newPath)
-  }
+    const newPath = `/${newLocale}${pathname === "/" ? "" : pathname}`;
+    nextRouter.push(newPath);
+  };
 
   const navLinks = [
     { href: "/gallery", label: t("gallery") },
     { href: "/services", label: t("services") },
     { href: "/about", label: t("about") },
     { href: "/contact", label: t("contact") },
-  ]
+  ];
 
   return (
     <header
       className={`fixed top-0 w-full z-50 transition-all duration-500 ${
-        isScrolled ? "bg-background/80 backdrop-blur-md border-b border-border" : "bg-transparent"
+        isScrolled
+          ? "bg-background/80 backdrop-blur-md border-b border-border"
+          : "bg-transparent"
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 py-6 flex items-center justify-between">
         <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 bg-gradient-to-br from-accent to-accent/60 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
-            <span className="text-foreground font-bold text-sm">VU</span>
-          </div>
-          <span className="text-lg font-bold text-foreground">VU Creative Agency</span>
+          <Image
+            src="/Logos/LEGADO_Logotipo-06.png"
+            alt="Legado Logo"
+            width={180}
+            height={60}
+            className="h-auto w-auto max-h-12 group-hover:scale-105 transition-transform duration-300"
+            priority
+          />
         </Link>
 
         {/* Desktop Navigation */}
@@ -59,7 +66,9 @@ export default function Header() {
               key={link.href}
               href={link.href}
               className={`transition ${
-                pathname === link.href ? "text-accent" : "text-foreground/70 hover:text-accent"
+                pathname === link.href
+                  ? "text-accent"
+                  : "text-foreground/70 hover:text-accent"
               }`}
             >
               {link.label}
@@ -98,7 +107,10 @@ export default function Header() {
             <Globe size={18} />
             <span className="text-xs font-medium uppercase">{locale}</span>
           </button>
-          <button className="text-foreground" onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
+          <button
+            className="text-foreground"
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+          >
             {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
@@ -123,7 +135,9 @@ export default function Header() {
                 <Link
                   href={link.href}
                   className={`block py-2 transition ${
-                    pathname === link.href ? "text-accent" : "text-foreground/70 hover:text-accent"
+                    pathname === link.href
+                      ? "text-accent"
+                      : "text-foreground/70 hover:text-accent"
                   }`}
                   onClick={() => setMobileMenuOpen(false)}
                 >
@@ -148,5 +162,5 @@ export default function Header() {
         )}
       </AnimatePresence>
     </header>
-  )
+  );
 }

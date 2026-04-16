@@ -89,9 +89,18 @@
     "learnMore": "Learn More About Us",
     "valuesTitle": "Our Core Values",
     "values": {
-      "excellence": { "title": "Excellence", "desc": "We pursue perfection in every pixel" },
-      "collaboration": { "title": "Collaboration", "desc": "Your vision drives our creativity" },
-      "innovation": { "title": "Innovation", "desc": "Pushing boundaries of design" },
+      "excellence": {
+        "title": "Excellence",
+        "desc": "We pursue perfection in every pixel"
+      },
+      "collaboration": {
+        "title": "Collaboration",
+        "desc": "Your vision drives our creativity"
+      },
+      "innovation": {
+        "title": "Innovation",
+        "desc": "Pushing boundaries of design"
+      },
       "passion": { "title": "Passion", "desc": "We love what we do" }
     }
   },
@@ -111,22 +120,46 @@
     ]
   },
   "works": {
-    "sectionLabel": "OUR PORTFOLIO",
-    "title": "Our",
-    "titleAccent": "Latest Works",
-    "subtitle": "A showcase of our most compelling projects that blend creativity with strategy",
-    "viewAll": "View All Projects",
-    "projects": [
-      { "title": "E-Commerce Revolution", "category": "Web Design & Branding" },
-      { "title": "Digital Marketing Suite", "category": "UI/UX Design" },
-      { "title": "Brand Identity System", "category": "Graphic Design" },
-      { "title": "Interactive Portfolio", "category": "Web Development" },
-      { "title": "Mobile App Design", "category": "Mobile UI Design" },
-      { "title": "Visual Campaign", "category": "Graphic Design" }
+    "title": "Creative Solutions",
+    "subtitle": "We build brands with clarity, strategy, and intention.",
+    "cards": [
+      {
+        "number": "01",
+        "title": "Brand & Positioning",
+        "description": "Define what you stand for and how you show up."
+      },
+      {
+        "number": "02",
+        "title": "Content & Storytelling",
+        "description": "Turn ideas into narratives people connect with."
+      },
+      {
+        "number": "03",
+        "title": "Creative & Production",
+        "description": "Bring your brand to life through visuals and execution."
+      },
+      {
+        "number": "04",
+        "title": "Digital Growth & Campaigns",
+        "description": "Scale your brand with strategy, content, and performance."
+      }
     ]
   },
   "logoMarquee": {
-    "brands": ["ADOBE", "FIGMA", "SKETCH", "CANVA", "DRIBBBLE", "BEHANCE", "WEBFLOW", "FRAMER"]
+    "brands": [
+      "BRANDING",
+      "STRATEGY",
+      "CONTENT",
+      "MARKETING",
+      "DESIGN",
+      "VIDEO",
+      "SOCIAL",
+      "CAMPAIGNS",
+      "GROWTH",
+      "CREATIVE",
+      "DIGITAL",
+      "STORYTELLING"
+    ]
   },
   "videoBanner": {
     "sectionLabel": "SEE US IN ACTION",
@@ -176,12 +209,36 @@
     "titleAccent": "Journey",
     "subtitle": "A decade of creativity, growth, and countless projects that shaped who we are today.",
     "milestones": [
-      { "year": "2014", "title": "The Beginning", "description": "Founded in a small NYC apartment with big dreams and three passionate designers." },
-      { "year": "2016", "title": "First Major Client", "description": "Landed our first Fortune 500 client, marking a turning point in our journey." },
-      { "year": "2018", "title": "Global Expansion", "description": "Opened offices in London and Tokyo, expanding our reach across continents." },
-      { "year": "2020", "title": "Award Recognition", "description": "Won our first Webby Award and multiple design industry accolades." },
-      { "year": "2022", "title": "Team Growth", "description": "Expanded to 15+ team members with diverse backgrounds and expertise." },
-      { "year": "2024", "title": "Innovation Lab", "description": "Launched our AI-powered design innovation lab for next-gen experiences." }
+      {
+        "year": "2014",
+        "title": "The Beginning",
+        "description": "Founded in a small NYC apartment with big dreams and three passionate designers."
+      },
+      {
+        "year": "2016",
+        "title": "First Major Client",
+        "description": "Landed our first Fortune 500 client, marking a turning point in our journey."
+      },
+      {
+        "year": "2018",
+        "title": "Global Expansion",
+        "description": "Opened offices in London and Tokyo, expanding our reach across continents."
+      },
+      {
+        "year": "2020",
+        "title": "Award Recognition",
+        "description": "Won our first Webby Award and multiple design industry accolades."
+      },
+      {
+        "year": "2022",
+        "title": "Team Growth",
+        "description": "Expanded to 15+ team members with diverse backgrounds and expertise."
+      },
+      {
+        "year": "2024",
+        "title": "Innovation Lab",
+        "description": "Launched our AI-powered design innovation lab for next-gen experiences."
+      }
     ]
   },
   "aboutTeam": {
@@ -189,10 +246,26 @@
     "titleAccent": "Team",
     "subtitle": "The creative minds behind VU Creative Agency. We're a diverse group united by our love for great design.",
     "members": [
-      { "name": "Marcus Chen", "role": "Creative Director", "bio": "15+ years leading creative teams for global brands." },
-      { "name": "Sarah Williams", "role": "Lead Designer", "bio": "Award-winning visual designer with a passion for typography." },
-      { "name": "David Park", "role": "Motion Designer", "bio": "Bringing brands to life through dynamic animations." },
-      { "name": "Emma Rodriguez", "role": "Brand Strategist", "bio": "Crafting brand stories that resonate and convert." }
+      {
+        "name": "Marcus Chen",
+        "role": "Creative Director",
+        "bio": "15+ years leading creative teams for global brands."
+      },
+      {
+        "name": "Sarah Williams",
+        "role": "Lead Designer",
+        "bio": "Award-winning visual designer with a passion for typography."
+      },
+      {
+        "name": "David Park",
+        "role": "Motion Designer",
+        "bio": "Bringing brands to life through dynamic animations."
+      },
+      {
+        "name": "Emma Rodriguez",
+        "role": "Brand Strategist",
+        "bio": "Crafting brand stories that resonate and convert."
+      }
     ]
   },
   "aboutValues": {
@@ -200,12 +273,30 @@
     "titleAccent": "Values",
     "subtitle": "The principles that guide every decision we make and every project we undertake.",
     "items": [
-      { "title": "Passion", "description": "We pour our hearts into every project, treating each one as our own." },
-      { "title": "Innovation", "description": "Constantly pushing boundaries and exploring new creative territories." },
-      { "title": "Precision", "description": "Meticulous attention to detail in every pixel and interaction." },
-      { "title": "Collaboration", "description": "Working together with clients as true creative partners." },
-      { "title": "Creativity", "description": "Fearless exploration of ideas that challenge the status quo." },
-      { "title": "Excellence", "description": "Never settling for good when great is within reach." }
+      {
+        "title": "Passion",
+        "description": "We pour our hearts into every project, treating each one as our own."
+      },
+      {
+        "title": "Innovation",
+        "description": "Constantly pushing boundaries and exploring new creative territories."
+      },
+      {
+        "title": "Precision",
+        "description": "Meticulous attention to detail in every pixel and interaction."
+      },
+      {
+        "title": "Collaboration",
+        "description": "Working together with clients as true creative partners."
+      },
+      {
+        "title": "Creativity",
+        "description": "Fearless exploration of ideas that challenge the status quo."
+      },
+      {
+        "title": "Excellence",
+        "description": "Never settling for good when great is within reach."
+      }
     ]
   },
   "aboutCta": {
@@ -220,7 +311,14 @@
     "titleLine1": "Creative ",
     "titleLine2": "Services",
     "subtitle": "From stunning visuals to seamless digital experiences, we offer comprehensive creative solutions that make your brand unforgettable.",
-    "pills": ["Graphic Design", "Web Design", "Branding", "UI/UX", "Motion", "Photography"]
+    "pills": [
+      "Graphic Design",
+      "Web Design",
+      "Branding",
+      "UI/UX",
+      "Motion",
+      "Photography"
+    ]
   },
   "servicesGrid": {
     "sectionLabel": "COMPREHENSIVE SOLUTIONS",
@@ -233,42 +331,82 @@
       {
         "title": "Graphic Design",
         "description": "Eye-catching visuals that tell your brand story. From logos to marketing materials, we create designs that leave lasting impressions.",
-        "features": ["Logo Design", "Print Materials", "Illustrations", "Packaging"]
+        "features": [
+          "Logo Design",
+          "Print Materials",
+          "Illustrations",
+          "Packaging"
+        ]
       },
       {
         "title": "Web Design & Development",
         "description": "Beautiful, responsive websites that convert visitors into customers. We blend aesthetics with functionality for stunning digital experiences.",
-        "features": ["Custom Websites", "E-commerce", "Web Applications", "CMS Development"]
+        "features": [
+          "Custom Websites",
+          "E-commerce",
+          "Web Applications",
+          "CMS Development"
+        ]
       },
       {
         "title": "UI/UX Design",
         "description": "Intuitive interfaces designed for engagement. We create seamless user experiences that delight and retain your audience.",
-        "features": ["User Research", "Wireframing", "Prototyping", "Usability Testing"]
+        "features": [
+          "User Research",
+          "Wireframing",
+          "Prototyping",
+          "Usability Testing"
+        ]
       },
       {
         "title": "Brand Identity",
         "description": "Comprehensive brand strategies that elevate your identity. We build memorable brands that resonate with your target market.",
-        "features": ["Brand Strategy", "Visual Identity", "Brand Guidelines", "Rebranding"]
+        "features": [
+          "Brand Strategy",
+          "Visual Identity",
+          "Brand Guidelines",
+          "Rebranding"
+        ]
       },
       {
         "title": "Motion Graphics",
         "description": "Dynamic animations that bring your message to life. From explainer videos to social content, we create motion that captivates.",
-        "features": ["Animation", "Video Editing", "Social Content", "Explainer Videos"]
+        "features": [
+          "Animation",
+          "Video Editing",
+          "Social Content",
+          "Explainer Videos"
+        ]
       },
       {
         "title": "Photography",
         "description": "Professional photography that showcases your brand. We capture stunning visuals for products, events, and marketing campaigns.",
-        "features": ["Product Photos", "Event Coverage", "Lifestyle Shots", "Photo Editing"]
+        "features": [
+          "Product Photos",
+          "Event Coverage",
+          "Lifestyle Shots",
+          "Photo Editing"
+        ]
       },
       {
         "title": "Illustration",
         "description": "Custom illustrations that add character to your brand. From icons to full artwork, we bring creativity to every stroke.",
-        "features": ["Custom Icons", "Character Design", "Digital Art", "Infographics"]
+        "features": [
+          "Custom Icons",
+          "Character Design",
+          "Digital Art",
+          "Infographics"
+        ]
       },
       {
         "title": "Social Media Design",
         "description": "Scroll-stopping social content that drives engagement. We create cohesive visual strategies for all your social platforms.",
-        "features": ["Post Templates", "Story Design", "Ad Creatives", "Content Strategy"]
+        "features": [
+          "Post Templates",
+          "Story Design",
+          "Ad Creatives",
+          "Content Strategy"
+        ]
       }
     ]
   },
@@ -348,23 +486,79 @@
     "stats": ["250+ Projects", "120+ Clients", "15+ Awards", "10+ Years"]
   },
   "galleryGrid": {
-    "categories": ["All", "Web Design", "Branding", "Graphics", "Mobile Apps", "UI/UX", "Photography"],
+    "categories": [
+      "All",
+      "Web Design",
+      "Branding",
+      "Graphics",
+      "Mobile Apps",
+      "UI/UX",
+      "Photography"
+    ],
     "viewLive": "View Live Project",
     "client": "Client",
     "year": "Year",
     "projects": [
-      { "title": "Luxe Fashion E-Commerce", "description": "A premium e-commerce platform for high-end fashion brands with immersive shopping experience.", "client": "Luxe Fashion Co." },
-      { "title": "TechVault Brand Identity", "description": "Complete brand identity system including logo, colors, and guidelines for a tech startup.", "client": "TechVault Inc." },
-      { "title": "Minimalist App Interface", "description": "Clean and intuitive mobile app design focused on user experience.", "client": "AppFlow" },
-      { "title": "Creative Campaign Visuals", "description": "Eye-catching visual campaign materials for a product launch.", "client": "Nova Marketing" },
-      { "title": "Restaurant Website Redesign", "description": "Modern website redesign for an upscale dining establishment.", "client": "The Golden Fork" },
-      { "title": "Finance Dashboard UI", "description": "Comprehensive dashboard design for financial analytics platform.", "client": "FinanceFlow" },
-      { "title": "Startup Brand Package", "description": "Full branding package for an innovative tech startup.", "client": "Innovate Labs" },
-      { "title": "Product Photography", "description": "Professional product photography for luxury goods.", "client": "Premium Goods" },
-      { "title": "Social Media Kit", "description": "Comprehensive social media design templates and assets.", "client": "Social Spark" },
-      { "title": "Fitness App Design", "description": "Health and fitness tracking app with gamification elements.", "client": "FitLife" },
-      { "title": "Architecture Portfolio", "description": "Elegant portfolio website for an architecture firm.", "client": "Modern Arch" },
-      { "title": "Event Branding", "description": "Complete event branding for a tech conference.", "client": "TechCon 2024" }
+      {
+        "title": "Luxe Fashion E-Commerce",
+        "description": "A premium e-commerce platform for high-end fashion brands with immersive shopping experience.",
+        "client": "Luxe Fashion Co."
+      },
+      {
+        "title": "TechVault Brand Identity",
+        "description": "Complete brand identity system including logo, colors, and guidelines for a tech startup.",
+        "client": "TechVault Inc."
+      },
+      {
+        "title": "Minimalist App Interface",
+        "description": "Clean and intuitive mobile app design focused on user experience.",
+        "client": "AppFlow"
+      },
+      {
+        "title": "Creative Campaign Visuals",
+        "description": "Eye-catching visual campaign materials for a product launch.",
+        "client": "Nova Marketing"
+      },
+      {
+        "title": "Restaurant Website Redesign",
+        "description": "Modern website redesign for an upscale dining establishment.",
+        "client": "The Golden Fork"
+      },
+      {
+        "title": "Finance Dashboard UI",
+        "description": "Comprehensive dashboard design for financial analytics platform.",
+        "client": "FinanceFlow"
+      },
+      {
+        "title": "Startup Brand Package",
+        "description": "Full branding package for an innovative tech startup.",
+        "client": "Innovate Labs"
+      },
+      {
+        "title": "Product Photography",
+        "description": "Professional product photography for luxury goods.",
+        "client": "Premium Goods"
+      },
+      {
+        "title": "Social Media Kit",
+        "description": "Comprehensive social media design templates and assets.",
+        "client": "Social Spark"
+      },
+      {
+        "title": "Fitness App Design",
+        "description": "Health and fitness tracking app with gamification elements.",
+        "client": "FitLife"
+      },
+      {
+        "title": "Architecture Portfolio",
+        "description": "Elegant portfolio website for an architecture firm.",
+        "client": "Modern Arch"
+      },
+      {
+        "title": "Event Branding",
+        "description": "Complete event branding for a tech conference.",
+        "client": "TechCon 2024"
+      }
     ]
   },
   "galleryStats": {

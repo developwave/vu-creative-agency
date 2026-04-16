@@ -16,24 +16,22 @@ export const metadata: Metadata = {
   title: "VU Creative Agency - Web & Graphic Design",
   description:
     "Stunning web design and graphic design solutions that elevate your brand. We create modern, impactful digital experiences.",
-  generator: "v0.app",
   icons: {
     icon: [
+      { url: "/favicon/favicon.ico" },
       {
-        url: "/icon-light-32x32.png",
-        media: "(prefers-color-scheme: light)",
+        url: "/favicon/favicon-96x96.png",
+        sizes: "96x96",
+        type: "image/png",
       },
       {
-        url: "/icon-dark-32x32.png",
-        media: "(prefers-color-scheme: dark)",
-      },
-      {
-        url: "/icon.svg",
-        type: "image/svg+xml",
+        url: "/favicon/favicon.png",
+        type: "image/png",
       },
     ],
-    apple: "/apple-icon.png",
+    apple: "/favicon/apple-touch-icon.png",
   },
+  manifest: "/favicon/site.webmanifest",
 };
 
 export default async function RootLayout({
