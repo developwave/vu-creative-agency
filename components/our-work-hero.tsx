@@ -6,8 +6,8 @@ import { useTranslations } from "next-intl";
 import { TypingAnimation } from "@/components/ui/typing-animation";
 import HeroParticles from "@/components/hero-particles";
 
-export default function AboutPageHero() {
-  const t = useTranslations("aboutHero");
+export default function OurWorkHero() {
+  const t = useTranslations("ourWorkHero");
   const containerRef = useRef<HTMLElement>(null);
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -67,7 +67,7 @@ export default function AboutPageHero() {
           >
             <TypingAnimation
               as="span"
-              className="text-[#282828] leading-[0.95] mr-[0.25em]"
+              className="text-[#282828] leading-[0.95]"
               duration={60}
               showCursor={false}
             >
